@@ -1,0 +1,15 @@
+[["wait",500],
+ ["key","ArrowLeft","#edu-p-thr"],["key","ArrowLeft","#edu-p-thr"],
+ ["eval","document.getElementById('edu-p-thr').value + ' ' + document.getElementById('edu-p-thr').getAttribute('aria-valuetext') + ' | ' + document.querySelectorAll('.edu-formula dd')[1].textContent + ' | autoplay=' + document.getElementById('edu-autoplay').getAttribute('aria-checked')"],
+ ["key","ArrowRight",".edu-seg[aria-checked=true]"],
+ ["eval","document.querySelector('.edu-seg[aria-checked=true]').textContent + ' path=' + document.querySelector('.rp-stage').getAttribute('data-path')"],
+ ["key"," ",".rp-stage"],["wait",3500],
+ ["eval","document.querySelector('[data-readout]').textContent + ' strip=' + document.getElementById('edu-p-strip').value"],
+ ["key","ArrowRight",".rp-stage"],["key","ArrowRight",".rp-stage"],["wait",300],
+ ["eval","document.querySelector('[data-readout]').textContent + ' valuenow=' + document.querySelector('.rp-stage').getAttribute('aria-valuenow')"],
+ ["key","i",".rp-stage"],["wait",4500],
+ ["eval","document.querySelector('[data-readout]').textContent + ' | ' + document.querySelector('[data-live]').textContent + ' | strip=' + document.getElementById('edu-p-strip').value"],
+ ["key","Escape",".rp-stage"],["wait",3000],
+ ["eval","document.querySelector('[data-readout]').textContent + ' | ' + document.querySelector('[data-live]').textContent"],
+ ["eval","(() => { const h = window.EDU.mount({ stage: document.querySelector('.rp-stage'), set() {} }); const again = window.EDU.mount({ stage: document.querySelector('.rp-stage'), set() {} }); const same = h === again; h.destroy(); return 'same=' + same + ' panel=' + document.querySelector('[data-edu-panel]').children.length + ' status=' + document.querySelector('[data-edu-status]').textContent.length + ' lit=' + document.querySelectorAll('.it[data-on]').length; })()"]
+]

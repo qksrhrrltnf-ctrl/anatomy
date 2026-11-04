@@ -1,0 +1,12 @@
+[["wait",800],
+ ["eval","(() => { const b = document.querySelector('[data-part=stick-upper] circle[data-edu-hit]').getBoundingClientRect(); window.__b = b; const el = document.querySelector('[data-part=stick-upper]'); const st = document.querySelector('.iso-stage'); const x = b.left + b.width/2, y = b.top + b.height/2; el.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true, clientX: x, clientY: y, pointerId: 7, button: 0 })); st.dispatchEvent(new PointerEvent('pointermove', { bubbles: true, clientX: x + 40, clientY: y, pointerId: 7, buttons: 1 })); return 'ball ' + Math.round(x) + ',' + Math.round(y); })()"],
+ ["wait",500],
+ ["eval","(() => { const b = document.querySelector('[data-part=stick-upper] circle[data-edu-hit]').getBoundingClientRect(); return 'ball now ' + Math.round(b.left + b.width/2) + ',' + Math.round(b.top + b.height/2) + ' closed=' + [...document.querySelectorAll('.ac-switch[data-on]')].length + ' seg=' + [...document.querySelectorAll('.edu-seg[aria-checked=true]')].map(b=>b.textContent).join(','); })()"],
+ ["shot","shots/t-drag-right.png",".iso-stage",3,[330,420,140,140]],
+ ["eval","(() => { const b = window.__b; const st = document.querySelector('.iso-stage'); const x = b.left + b.width/2, y = b.top + b.height/2; st.dispatchEvent(new PointerEvent('pointermove', { bubbles: true, clientX: x, clientY: y - 40, pointerId: 7, buttons: 1 })); return 1; })()"],
+ ["wait",500],
+ ["eval","(() => { const b = document.querySelector('[data-part=stick-upper] circle[data-edu-hit]').getBoundingClientRect(); return 'ball now ' + Math.round(b.left + b.width/2) + ',' + Math.round(b.top + b.height/2) + ' closed=' + [...document.querySelectorAll('.ac-switch[data-on]')].length + ' seg=' + [...document.querySelectorAll('.edu-seg[aria-checked=true]')].map(b=>b.textContent).join(','); })()"],
+ ["shot","shots/t-drag-up.png",".iso-stage",3,[330,420,140,140]],
+ ["eval","(() => { document.querySelector('.iso-stage').dispatchEvent(new PointerEvent('pointerup', { bubbles: true, pointerId: 7 })); return 1; })()"],["wait",400],
+ ["eval","'after ' + document.querySelectorAll('.ac-switch[data-on]').length + ' ' + document.getElementById('edu-autoplay').getAttribute('aria-checked')"]
+]

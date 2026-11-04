@@ -24,7 +24,8 @@
 .edu-title{margin:0;font-size:26px;line-height:1.35;font-weight:700;color:var(--anatomy-strong);letter-spacing:-.01em}
 .edu-lead{margin:10px 0 0;font-size:15px;line-height:1.8;color:var(--edu-body)}
 .edu-foot{margin-top:28px;font-size:12.5px;line-height:1.7;color:var(--anatomy-text);max-width:760px}
-.edu-layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:32px;align-items:start}
+.edu-layout{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:36px;align-items:start}
+@media (max-width:1200px){.edu-layout{grid-template-columns:minmax(0,1fr) 340px;gap:28px}}
 .edu-figure{min-width:0}
 .edu-figure .iso-figure{margin:24px 0 0}
 .edu .iso-plate-corner{font-family:var(--edu-font);font-size:12px;letter-spacing:0;font-variant-numeric:tabular-nums}
@@ -37,7 +38,7 @@
    Every sibling along that path steps back. "tone" (default) keeps solids opaque and lowers their tones,
    so nothing behind shows through; "fade" (content.dim = "fade") lowers opacity instead. */
 [data-edu-focus]{
-  --edu-k-hi:var(--anatomy-hi);--edu-k-lo:var(--anatomy-lo);--edu-k-faint:var(--anatomy-faint);--edu-k-paper:var(--anatomy-paper);
+  --edu-k-hi:var(--anatomy-hi);--edu-k-mid:var(--anatomy-mid);--edu-k-lit:var(--anatomy-lit);--edu-k-lo:var(--anatomy-lo);--edu-k-faint:var(--anatomy-faint);--edu-k-paper:var(--anatomy-paper);
   --edu-k-s0:var(--anatomy-shade-0);--edu-k-s1:var(--anatomy-shade-1);--edu-k-s2:var(--anatomy-shade-2);--edu-k-s3:var(--anatomy-shade-3);
   --edu-k-top:var(--anatomy-top);--edu-k-face:var(--anatomy-face);--edu-k-lit-top:var(--anatomy-lit-top);--edu-k-lit-shade:var(--anatomy-lit-shade);
   --edu-k-halo:var(--anatomy-halo-opacity);--edu-k-red:var(--anatomy-red);--edu-k-green:var(--anatomy-green);--edu-k-blue:var(--anatomy-blue);--edu-k-flow:var(--edu-flow,var(--anatomy-blue));
@@ -55,6 +56,14 @@
 }
 [data-edu-focus="fade"]>:not([data-edu-on],[data-edu-path],[data-edu-keep],defs,style,title,canvas),[data-edu-focus="fade"] [data-edu-path]>:not([data-edu-on],[data-edu-path],[data-edu-keep],defs,style,title,canvas){opacity:var(--edu-dim,.2)}
 
+/* The lit part steps up one tone (lo→mid, mid→hi, hi→lit), as the Raptor's selection does: its outline brightens. */
+[data-edu-focus="tone"] [data-edu-on]{--anatomy-hi:var(--edu-k-lit);--anatomy-mid:var(--edu-k-hi);--anatomy-lo:var(--edu-k-mid)}
+/* Dark: the dimmed rest drops one tone further, since dark lo/faint sit close together. Still opaque. */
+.iso:not([data-theme="light"]) [data-edu-focus="tone"]>:not([data-edu-on],.iso:not([data-theme="light"]) [data-edu-path],.iso:not([data-theme="light"]) [data-edu-keep],.iso:not([data-theme="light"]) defs,.iso:not([data-theme="light"]) style,.iso:not([data-theme="light"]) title,.iso:not([data-theme="light"]) canvas),.iso:not([data-theme="light"]) [data-edu-focus="tone"] [data-edu-path]>:not([data-edu-on],.iso:not([data-theme="light"]) [data-edu-path],.iso:not([data-theme="light"]) [data-edu-keep],.iso:not([data-theme="light"]) defs,.iso:not([data-theme="light"]) style,.iso:not([data-theme="light"]) title,.iso:not([data-theme="light"]) canvas){
+  --anatomy-hi:var(--edu-k-faint);--anatomy-lit:var(--edu-k-faint);
+  --anatomy-mid:color-mix(in srgb,var(--edu-k-faint) 60%,var(--edu-k-paper));--anatomy-lo:color-mix(in srgb,var(--edu-k-faint) 60%,var(--edu-k-paper));
+  --anatomy-faint:color-mix(in srgb,var(--edu-k-faint) 35%,var(--edu-k-paper));--anatomy-dot:color-mix(in srgb,var(--edu-k-faint) 60%,var(--edu-k-paper));
+}
 /* adapter.probe: hit-test a drawing that has pointer-events:none, for one lookup */
 [data-edu-probe] svg,[data-edu-probe] svg *{pointer-events:visiblePainted!important}
 
@@ -179,7 +188,7 @@
 .edu-part-name{font-size:14px;font-weight:600;color:var(--anatomy-strong)}
 .edu-part-say{font-size:13px;line-height:1.6;color:var(--anatomy-text)}
 
-@media (max-width:920px){
+@media (max-width:1000px){
   .edu-layout{grid-template-columns:minmax(0,1fr);gap:0}
   .edu-panel{position:static;max-height:none;margin-top:20px}
   .edu-tabs{position:static}

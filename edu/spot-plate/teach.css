@@ -1,0 +1,33 @@
+/* Teaching fork: hover no longer drives merge, so only the fan says "drag me". */
+.ml{cursor:default}
+.ml .ml-blade,.ml .ml-fan-halo,.ml [data-piece="protractor"],.ml [data-piece="pivot"],.ml [data-piece="stops"],.ml[data-held]{cursor:ew-resize}
+
+/* Gap number line under the card (outside the drawing). Grey zones in the figure's own tones, text in text tokens. */
+.edu-line{
+  --z-joined:color-mix(in srgb,var(--anatomy-strong) 70%,var(--anatomy-card));
+  --z-reach:color-mix(in srgb,var(--anatomy-strong) 32%,var(--anatomy-card));
+  --z-plain:color-mix(in srgb,var(--anatomy-strong) 10%,var(--anatomy-card));
+  margin:16px 0 0;padding:16px 18px 12px;background:var(--anatomy-card);box-shadow:0 0 0 1px var(--anatomy-mid);
+}
+.edu-line-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 12px}
+.edu-line-title{margin:0;font-size:14px;font-weight:700;color:var(--anatomy-strong);font-variant-numeric:tabular-nums}
+.edu-line-sub{margin:0;font-size:12.5px;color:var(--anatomy-text)}
+.edu-line-box{width:100%;overflow:hidden;margin-top:6px}
+.edu-line-svg{display:block;touch-action:pan-y;cursor:ew-resize}
+.edu-line-zone[data-kind="joined"]{fill:var(--z-joined)}
+.edu-line-zone[data-kind="reach"]{fill:var(--z-reach)}
+.edu-line-zone[data-kind="plain"]{fill:var(--z-plain)}
+.edu-line-zone-name{font:12px/1 var(--edu-font);fill:var(--anatomy-text)}
+.edu-line-tick{font:10.5px/1 var(--anatomy-mono);fill:var(--anatomy-muted)}
+.edu-line-gap{stroke:var(--anatomy-card);stroke-width:2}
+.edu-line-gap[data-kind="joined"]{fill:var(--anatomy-lit)}
+.edu-line-gap[data-kind="kiss"]{fill:var(--anatomy-hi)}
+.edu-line-gap[data-kind="reach"]{fill:var(--anatomy-hi)}
+.edu-line-gap[data-kind="plain"]{fill:var(--anatomy-mid)}
+.edu-line-gap[data-hover]{stroke:var(--anatomy-strong);stroke-width:1.5}
+.edu-line-gap-name{font:600 11.5px/1 var(--anatomy-mono);fill:var(--anatomy-strong);font-variant-numeric:tabular-nums}
+.edu-line-twice{stroke:var(--anatomy-text);stroke-width:1;stroke-dasharray:3 3}
+.edu-line-handle line{stroke:var(--anatomy-lit);stroke-width:2}
+.edu-line-handle path{fill:var(--anatomy-lit)}
+.edu-line-read{min-height:2.9em;margin:4px 0 0;font-size:12.5px;line-height:1.45;color:var(--anatomy-text)}
+@media (max-width:560px){.edu-line{padding:14px 12px 10px}}

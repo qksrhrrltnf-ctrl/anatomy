@@ -1,0 +1,10 @@
+[["wait",800],
+ ["eval","'scroll: ' + document.documentElement.scrollWidth + ' / ' + document.documentElement.clientWidth"],
+ ["shot","shots/final/ko-phone-figure-THEME.png",".edu-figure",2],
+ ["eval","(() => { document.getElementById('edu-tab-steps').click(); document.querySelectorAll('.edu-dot')[6].click(); return document.querySelector('.edu-step-title').textContent; })()"],["wait",4000],
+ ["eval","'scroll: ' + document.documentElement.scrollWidth + ' / ' + document.documentElement.clientWidth + ' | ' + document.querySelector('.rp-hint').textContent"],
+ ["shot","shots/final/ko-phone-steps-THEME.png",".edu-layout",1.5],
+ ["eval","(() => { document.getElementById('edu-tab-params').click(); return 1; })()"],["wait",300],
+ ["shot","shots/final/ko-phone-params-THEME.png",".edu-panel",1.5],
+ ["eval","'scroll: ' + document.documentElement.scrollWidth + ' / ' + document.documentElement.clientWidth"]
+]

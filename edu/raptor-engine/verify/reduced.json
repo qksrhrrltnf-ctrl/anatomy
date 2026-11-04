@@ -1,0 +1,10 @@
+[["wait",800],
+ ["eval","document.querySelector('[data-readout]').textContent + ' autoplay=' + document.getElementById('edu-autoplay').getAttribute('aria-checked')"],
+ ["click","[data-fire]"],["wait",1500],
+ ["eval","document.querySelector('[data-readout]').textContent"],
+ ["eval","(() => { const i = document.getElementById('edu-p-thr'); i.value = 40; i.dispatchEvent(new Event('input', { bubbles: true })); return 1; })()"],["wait",600],
+ ["eval","document.querySelector('[data-readout]').textContent"],
+ ["shot","shots/final/ko-SUFFIX.png",".edu-figure",1],
+ ["click","#edu-tab-steps"],["click",".edu-dot:nth-child(6)"],["wait",3500],
+ ["eval","document.querySelector('[data-readout]').textContent + ' | ' + document.querySelector('[data-edu-status]').textContent"]
+]

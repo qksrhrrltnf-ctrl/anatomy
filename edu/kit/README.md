@@ -38,7 +38,8 @@ writePage(HERE, theme === "light" ? "<이름>-ko-light.html" : "<이름>-ko.html
 | `stage` | 그림 무대 마크업(`.iso-stage` 안에 svg, canvas 등) |
 | `css`, `script` | 예제 CSS, 그리고 `kitScript()`(+`glScript()`) + 라이브 스크립트. kit 런타임은 자동으로 맨 앞에 붙습니다. |
 | `head` | 카드 본문에서 무대 앞에 넣을 마크업(예: PDF 버튼) |
-| `width` | 페이지 폭(기본 1120). 920px 이하에서는 패널이 그림 아래로 내려갑니다. |
+| `width` | 페이지 폭(기본 1440). 패널은 400px(1200px 이하에서 340px)이고 그림 열이 나머지를 모두 씁니다. 1000px 이하에서는 패널이 그림 아래로 내려갑니다. |
+| `values` | 카드 캡션·범례 속 `{키}` 템플릿의 첫 화면 글자(스크립트가 돌기 전). 예: `{ V: "1.5 V", I: "0.30 A" }`. 런타임이 `refresh()` 때마다 `adapter.values()`로 다시 채웁니다. |
 | `figureClass`, `pageClass` | `.edu-figure`, `.edu` 래퍼에 붙일 클래스. 예제 CSS가 `.rp` 같은 클래스에 묶여 있을 때 씁니다. |
 
 결과는 파일 하나입니다. 외부 글꼴·CDN이 없고(맑은 고딕 등 시스템 글꼴), `<html lang="ko">`, 콘텐츠는 `<script type="application/json" id="edu-content">`에 들어갑니다.
@@ -49,7 +50,7 @@ writePage(HERE, theme === "light" ? "<이름>-ko-light.html" : "<이름>-ko.html
 export default {
   lang: "ko",
   page: { title, kicker, heading, lead, footer },        // 그림 위 머리말, 아래 각주(모델의 단순화 가정을 여기 씁니다)
-  card: { fig: "그림 1", title, hint, readout, keys: [{ mark, label }], caption },  // 원본 카드의 한국어판
+  card: { fig: "그림 1", title, hint, readout, keys: [{ mark, label }], caption },  // 원본 카드의 한국어판. caption·keys.label에도 {키} 템플릿 사용 가능
   keep: [".pb-glow"],          // 강조할 때 흐리게 하지 않을 요소(빛, 그림자 층 등)
   dim: "tone",                 // 강조 방식: "tone"(기본, 불투명하게 톤만 낮춤) | "fade"(불투명도)
   start: "params",             // 처음 열 탭: params | steps | questions | parts
@@ -73,7 +74,7 @@ export default {
 };
 ```
 
-**템플릿.** 문장 안의 `{키}`는 어댑터 `values()`가 돌려준 값의 글자(`t`)로 바뀝니다. 질문 해설에서는 `{from.P}`, `{to.P}`(예측 자세·확인 자세에서 잰 값), `{ratio.P}`(to ÷ from, 예: `4배`), `{answer}`(정답 문구)를 씁니다. 숫자와 단위 사이 공백은 자동으로 줄바꿈 없는 공백이 됩니다. **문장 속 숫자는 직접 쓰지 말고 템플릿으로 쓰십시오.** 그래야 모델과 어긋나지 않습니다.
+**템플릿.** 문장 안의 `{키}`(공식, 단계, 질문, 부품 설명, 카드 캡션, 범례)는 어댑터 `values()`가 돌려준 값의 글자(`t`)로 바뀝니다. 질문 해설에서는 `{from.P}`, `{to.P}`(예측 자세·확인 자세에서 잰 값), `{ratio.P}`(to ÷ from, 예: `4배`), `{answer}`(정답 문구)를 씁니다. 숫자와 단위 사이 공백은 자동으로 줄바꿈 없는 공백이 됩니다. **문장 속 숫자는 직접 쓰지 말고 템플릿으로 쓰십시오.** 그래야 모델과 어긋나지 않습니다.
 
 **pose.** 단계와 질문의 `pose`, `from`, `to`는 객체입니다. 키가 변수 id이면 kit이 그 변수를 바꾸고(컨트롤도 따라 움직임), 값이 참인 `action` 변수 id면 그 동작을 실행합니다. 그 밖의 키(`pressed`, `tap`, `apart` 등)는 객체 전체와 함께 `adapter.pose(pose)`로 넘어갑니다. 변수가 먼저 적용되고 그다음 `pose()`가 불립니다. 단계 자세에는 실험에 필요한 변수를 모두 적으십시오(앞 단계에서 바꾼 값이 남지 않게).
 
@@ -159,6 +160,7 @@ edu = EDU.mount({
 - 위험·한계(필라멘트 끊어짐 같은)가 있으면 상태 줄(`warn`/`danger`)로 미리 알리고, 연출은 되돌릴 수 있게(`action` 버튼) 하십시오.
 - 단계는 5~7개, 질문은 2~3개. 질문은 "예측 → 그림이 바뀌며 확인"이 되도록 `from`과 `to` 자세를 둡니다. 확인 장면이 애니메이션이면 `delay`를 늘리십시오(랩터 3000 ms 등).
 - 모델이 실제와 다르게 단순화된 점(저항 일정 등)은 `page.footer`에 한 줄로 밝힙니다.
+- **캡션·설명의 숫자는 모델을 따르거나 기준값임을 밝힙니다.** 카드 캡션, 범례, 부품 설명에 숫자를 쓸 때는 `{키}` 템플릿으로 써서 변수를 바꾸면 따라 바뀌게 하십시오. 고정 숫자가 꼭 필요하면 "처음 값(1.5 V, 5 Ω) 기준"처럼 기준임을 문장에 적으십시오.
 
 ## 6. 검증
 
@@ -178,3 +180,12 @@ node ../../scripts/drive.mjs <이름>-ko.html --actions verify/lines.json --heig
 - 캡처는 툴팁, 변수 최소·최대, 단계, 질문, 부품, 390px를 모두 Read로 열어 보십시오. 패널이 그림을 가리는지, 글자가 넘치는지, 다크·라이트 대비가 낮은 곳이 없는지 봅니다.
 - 원본을 다시 빌드한 뒤 `git status`에 `examples/`가 나오지 않아야 합니다.
 - drive의 `click`은 보이지 않는 요소(닫힌 탭, 390px에서 화면 밖)에서 실패할 수 있습니다. 그럴 때는 `["eval", "document.getElementById('edu-tab-steps').click()"]`처럼 누르십시오.
+
+## 변경 이력
+
+kit 수정은 하위 호환을 지킵니다(기존 API와 `ko.mjs` 키는 그대로 동작). 수정할 때마다 한 줄씩 적습니다.
+
+- 2026-11-04 · 시범판(누름 버튼): eduPage, EDU.mount, 패널 4탭, 툴팁, tone 강조, root/probe/partAttr, flash/sequence, sync, action, autoplay, destroy·마운트 가드.
+- 2026-11-04 · 카드 캡션과 범례(`card.caption`, `card.keys[].label`)에 `{키}` 템플릿 지원. `eduPage({ values })`로 첫 화면 글자를 채우고, 런타임이 `refresh()` 때 다시 채웁니다. 템플릿이 없는 캡션은 예전처럼 고정 글자입니다.
+- 2026-11-04 · 레이아웃: 기본 페이지 폭 1120 → 1440, 패널 340 → 400px(1200px 이하 340px), 패널이 내려가는 폭 920 → 1000px. 그림 열이 남는 폭을 모두 써서 데스크톱에서 그림이 커집니다. `width`를 직접 넘긴 페이지는 그대로입니다. 390px 동작은 같습니다.
+- 2026-11-04 · tone 강조 대비: 강조 대상의 톤을 한 단계 올리고(lo→mid, mid→hi, hi→lit, 윤곽이 밝아짐), 다크에서는 흐린 나머지를 한 단계 더 낮춥니다. 흐린 부품은 여전히 불투명합니다.

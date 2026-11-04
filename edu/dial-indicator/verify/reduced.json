@@ -1,0 +1,1 @@
+[["wait",800],["eval","document.querySelector('[data-readout]').textContent + ' autoplay=' + document.getElementById('edu-autoplay').getAttribute('aria-checked')"],["key","End"],["wait",300],["eval","document.querySelector('[data-readout]').textContent"],["shot","shots/final/ko-reduced-THEME.png",".edu-figure",1.5]]

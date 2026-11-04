@@ -1,0 +1,5 @@
+[["wait",600],
+ ["eval","(() => { document.getElementById('edu-autoplay').click(); document.getElementById('edu-tab-parts').click(); return 1; })()"],["wait",2500],
+ ["move",".edu-parts li:nth-child(1) .edu-part",0.5,0.5],["wait",500],["eval","'lit=' + document.querySelectorAll('.it[data-on]').length + ' tip=' + !document.querySelector('[data-edu-tip]').hidden"],
+ ["shot","shots/final/ko-tooltip-loadcell-THEME.png",".edu-layout",1.5]
+]

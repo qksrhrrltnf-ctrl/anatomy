@@ -1,0 +1,1 @@
+[["wait",500],["key","Home"],["wait",1500],["shot","shots/t-z0.png",".iso-stage",4,[330,120,140,110]],["key","0"],["wait",1500],["eval","document.querySelector('[data-readout]').textContent"],["shot","shots/t-z1.png",".iso-stage",4,[330,120,140,110]]]

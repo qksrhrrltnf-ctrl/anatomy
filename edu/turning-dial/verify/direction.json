@@ -1,0 +1,2 @@
+[["wait",600],["turn",0],["wait",200],["shot","shots/dir-000.png",".iso-stage",1],["turn",20],["wait",200],["shot","shots/dir-020.png",".iso-stage",1],["turn",40],["wait",200],["shot","shots/dir-040.png",".iso-stage",1],
+ ["eval","document.querySelector('[data-readout]').textContent"]]

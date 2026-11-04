@@ -1,0 +1,6 @@
+[["wait",800],["eval","document.querySelector('[data-readout]').textContent + ' autoplay=' + document.getElementById('edu-autoplay').getAttribute('aria-checked')"],
+ ["key","Escape"],["wait",300],["eval","document.querySelector('[data-readout]').textContent + ' dot=' + document.querySelector('[data-part=dot]').style.opacity"],
+ ["key","Escape"],["wait",200],
+ ["eval","(() => { const i = document.getElementById('edu-p-slow'); i.value = 6; i.dispatchEvent(new Event('input', { bubbles: true })); document.getElementById('edu-p-power').click(); return 1; })()"],["wait",900],
+ ["eval","'slow-mo under reduced: crt=' + document.querySelector('[data-part=crt]').getAttribute('transform')"],
+ ["shot","shots/final/ko-reduced-light.png",".edu-figure",1.5]]

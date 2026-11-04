@@ -1,0 +1,9 @@
+[["wait",600],
+ ["eval","(() => { document.querySelectorAll('[aria-labelledby=\"edu-p-game-label\"] .edu-seg')[1].click(); window.__turnBy = (clicks) => { const st = document.querySelector('.td-stage'); const key = clicks > 0 ? 'ArrowLeft' : 'ArrowRight'; for (let i = 0; i < Math.abs(clicks); i++) st.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true })); return st.getAttribute('aria-valuenow'); }; window.__c = document.querySelector('[data-edu-status]').textContent.match(/번호 ([0-9]+) → ([0-9]+) → ([0-9]+)/).slice(1).map(Number); window.__R = () => Number(document.querySelector('.td-stage').getAttribute('aria-valuenow')); return JSON.stringify(window.__c); })()"],
+ ["eval","window.__turnBy(((window.__R() - window.__c[0]) % 100 + 100) % 100 + 100)"],["wait",3000],
+ ["eval","window.__turnBy(-(((window.__c[1] - window.__R()) % 100 + 100) % 100))"],["wait",3000],
+ ["eval","window.__turnBy(((window.__R() - window.__c[2]) % 100 + 100) % 100)"],["wait",1500],
+ ["sheet","shots/final/ko-game-led-THEME.png",120,8,".td-stage",1.5,[180,130,280,200],4],
+ ["wait",500],["eval","document.querySelector('[data-edu-status]').textContent"],
+ ["shot","shots/final/ko-game-THEME.png",".edu-figure",1]
+]

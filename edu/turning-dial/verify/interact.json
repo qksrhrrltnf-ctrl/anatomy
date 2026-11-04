@@ -1,0 +1,9 @@
+[["wait",800],
+ ["eval","'autoplay=' + document.getElementById('edu-autoplay').getAttribute('aria-checked')"],
+ ["drag",".td-stage",0.62,0.35,0.42,0.62,20],["wait",1200],
+ ["eval","'after drag autoplay=' + document.getElementById('edu-autoplay').getAttribute('aria-checked') + ' theta=' + document.getElementById('edu-p-theta').value + ' out=' + document.querySelector('#edu-pane-params .edu-param-value').textContent + ' readout=' + document.querySelector('[data-readout]').textContent"],
+ ["key","b",".td-stage"],["wait",2600],
+ ["eval","'pod switch=' + document.getElementById('edu-p-pod').getAttribute('aria-checked') + ' readout=' + document.querySelector('[data-readout]').textContent"],
+ ["key","ArrowRight",".td-stage"],["wait",600],["eval","document.querySelector('[data-readout]').textContent + ' aria=' + document.querySelector('.td-stage').getAttribute('aria-valuetext')"],
+ ["wait",4000],["eval","'no tour resume: ' + document.querySelector('[data-readout]').textContent"]
+]

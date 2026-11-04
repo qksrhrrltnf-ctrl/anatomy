@@ -1,0 +1,15 @@
+[["wait",800],
+ ["eval","document.querySelector('[data-readout]').textContent + ' | autoplay=' + document.getElementById('edu-autoplay')?.getAttribute('aria-checked')"],
+ ["eval","[...document.querySelectorAll('.edu-formula dd')].map(d => d.textContent).join(' | ')"],
+ ["eval","document.querySelector('.iso-caption').textContent"],
+ ["drag",".iso-stage",0.62,0.62,0.45,0.75,20],["wait",1500],
+ ["eval","document.querySelector('[data-readout]').textContent + ' | autoplay=' + document.getElementById('edu-autoplay').getAttribute('aria-checked') + ' | block seg=' + document.querySelector('.edu-seg[aria-checked=true]').textContent"],
+ ["key","End"],["wait",1500],
+ ["eval","document.querySelector('[data-readout]').textContent + ' | ' + [...document.querySelectorAll('.edu-seg[aria-checked=true]')].map(b=>b.textContent).join(',')"],
+ ["key","Home"],["wait",1500],["key","0"],["wait",800],
+ ["eval","document.querySelector('[data-readout]').textContent + ' | ' + document.querySelector('[data-edu-status]').textContent + ' | face=' + document.querySelector('[data-piece=face]').getAttribute('transform')"],
+ ["key","End"],["wait",1600],
+ ["eval","document.querySelector('[data-readout]').textContent + ' | ' + [...document.querySelectorAll('.edu-formula dd')].map(d => d.textContent).join(' | ')"],
+ ["shot","shots/t-zero.png",".edu-layout",1],
+ ["shot","shots/t-dial.png",".iso-stage",4,[330,120,140,110]]
+]

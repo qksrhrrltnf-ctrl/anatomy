@@ -21,7 +21,8 @@ export default {
       { mark: "raised", label: "접점 기둥 두 개: 다리판이 닫는 틈" },
       { mark: "blue", label: "파란 점: 전선 속 전자, 전류와 반대 방향으로 움직입니다" },
     ],
-    // caption is filled in by build.mjs from the model defaults
+    // {키}는 지금 모델 값으로 바뀝니다 (edu-kit이 refresh 때마다 다시 채움)
+    caption: "전지와 작은 전구를 누름 버튼과 함께 하나의 고리로 이었습니다. 용수철이 구리 다리판을 두 접점 기둥 위로 띄워 두므로 평소에는 열린 회로입니다. 누름단추를 누르면 다리판이 두 기둥에 닿아 닫힌 회로가 됩니다. 지금 값(전압 {V}, 전구 저항 {R})에서는 닫혔을 때 {I}의 전류가 흐르고 전구의 전력은 {P}입니다. 지금 회로: {circuit}. 손을 떼면 용수철이 다리판을 다시 들어 올립니다.",
   },
   keep: [".pb-glow"],
   questionDelay: 1400,

@@ -1,0 +1,7 @@
+[["wait",700],
+ ["eval","(() => { const i = document.getElementById('edu-p-strip'); i.value = 5; i.dispatchEvent(new Event('input', { bubbles: true })); return 1; })()"],["wait",8000],
+ ["eval","JSON.stringify(window.__raptor())"],
+ ["click","#edu-tab-steps"],["click",".edu-dot:nth-child(8)"],["wait",3000],
+ ["eval","JSON.stringify(window.__raptor())"],["wait",8000],
+ ["eval","JSON.stringify(window.__raptor()) + ' | ' + document.querySelector('[data-readout]').textContent + ' | ' + document.querySelector('[data-edu-status]').textContent"]
+]

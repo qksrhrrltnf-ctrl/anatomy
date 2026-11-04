@@ -1,0 +1,4 @@
+[["wait",800],["shot","shots/final/ko-no-webgl-THEME.png",".edu-figure",1],
+ ["eval","(() => { document.querySelectorAll('.edu-seg')[0].click(); const i = document.getElementById('edu-p-h'); i.value = 3; i.dispatchEvent(new Event('input', { bubbles: true })); return document.querySelector('[data-part=nodal]').getAttribute('d').length + ' nodal chars'; })()"],["wait",1500],
+ ["eval","document.querySelector('[data-part=nodal]').getAttribute('d').length + ' nodal chars, crests ' + document.querySelector('[data-part=crests]').getAttribute('d').length"],
+ ["shot","shots/final/ko-no-webgl-one-THEME.png",".edu-figure",1]]

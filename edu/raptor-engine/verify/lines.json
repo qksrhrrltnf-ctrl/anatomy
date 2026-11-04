@@ -1,0 +1,7 @@
+[["wait",600],
+ ["eval","(() => { window.EDU && document.getElementById('edu-autoplay').click(); return document.getElementById('edu-autoplay').getAttribute('aria-checked'); })()"],["wait",2500],
+ ["eval","document.querySelector('[data-readout]').textContent + ' focus=' + document.querySelector('.rp-stage').hasAttribute('data-focus')"],["lines",null],
+ ["key"," ",".rp-stage"],["wait",4000],["eval","document.querySelector('[data-readout]').textContent"],["lines",null],
+ ["eval","(() => { const i = document.getElementById('edu-p-strip'); i.value = 5; i.dispatchEvent(new Event('input', { bubbles: true })); return 1; })()"],["wait",9000],["eval","document.querySelector('[data-readout]').textContent"],["lines",null],
+ ["eval","(() => { document.querySelectorAll('.edu-seg')[3].click(); const i = document.getElementById('edu-p-strip'); i.value = 0; i.dispatchEvent(new Event('input', { bubbles: true })); return 1; })()"],["wait",9000],["eval","document.querySelector('[data-readout]').textContent + ' path=' + document.querySelector('.rp-stage').getAttribute('data-path')"],["lines",null]
+]

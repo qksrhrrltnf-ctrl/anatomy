@@ -1,0 +1,7 @@
+[["wait",800],
+ ["click","#edu-tab-steps"],["wait",200],
+ ["click",".edu-dot:nth-child(1)"],["wait",4000],["click","#edu-tab-parts"],["wait",400],["eval","document.querySelector('[data-readout]').textContent"],["lines",null],
+ ["click","#edu-tab-steps"],["click",".edu-dot:nth-child(2)"],["wait",9000],["click","#edu-tab-parts"],["wait",400],["eval","document.querySelector('[data-readout]').textContent + ' vb=' + document.querySelector('.iso-svg').getAttribute('viewBox')"],["lines",null],
+ ["click","#edu-tab-steps"],["click",".edu-dot:nth-child(6)"],["wait",800],["click","#edu-tab-parts"],["wait",400],["eval","document.querySelector('[data-readout]').textContent"],["lines",null],
+ ["click","#edu-tab-steps"],["click",".edu-dot:nth-child(7)"],["wait",1500],["click","#edu-tab-parts"],["wait",400],["eval","document.querySelector('[data-readout]').textContent + ' closed=' + document.querySelectorAll('.ac-switch[data-on]').length"],["lines",null]
+]

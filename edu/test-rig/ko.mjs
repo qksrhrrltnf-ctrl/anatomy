@@ -1,0 +1,161 @@
+// Korean teaching content for the test-rig figure (edu-kit schema: edu/kit/README.md).
+// Braced keys come from the rig's model (app.tsx values()): {k} {zeta} {c} {w0} {T} {x0} {pull} {force} {over} {settle}
+// {regime} {size} {lean} {limit} {settleZ2} {settleZ07}. Times are written in 초, lengths in px.
+
+export default {
+  lang: "ko",
+  page: {
+    title: "누르고 당기기 · 교육판",
+    kicker: "중학교 과학 · 힘과 운동 / 고등학교 물리학 · 역학",
+    heading: "누르고 당기기: 용수철과 감쇠 진동",
+    lead: "유리 버튼을 실은 캐리지를 용수철 네 개가 붙잡고 있습니다. 손가락 프로브로 버튼을 누르고 당겼다 놓아 보십시오. 강성 k와 감쇠비 ζ를 바꾸면 버튼이 제자리로 돌아오는 모습이 달라집니다.",
+    footer: "모델: 캐리지의 질량을 1로 둔 감쇠 용수철입니다(복원력은 변위에 비례하고, 감쇠력은 속도에 비례합니다). 숫자는 모두 그림을 움직이는 같은 모델에서 계산했습니다. 당긴 거리와 기울기의 관계(고무줄 저항)는 실제 용수철의 성질이 아니라 화면 버튼을 위해 만든 규칙입니다. 그림의 용수철 네 개는 모델의 용수철 하나를 나누어 보여 줍니다.",
+  },
+  card: {
+    fig: "그림 6",
+    title: "누르고 당기기",
+    hint: "누른 채 ← → 로 당기십시오",
+    readout: "크기 120.0 × 32.0 · 기울기 0.0 px",
+    keys: [
+      { mark: "raised", label: "누르고 있는 유리 버튼" },
+      { mark: "dotted", label: "쉬는 자리" },
+      { mark: "edge", label: "누른 곳에서 손가락까지 당긴 거리" },
+    ],
+    caption:
+      "120 × 32 유리 버튼을 시험대에 올렸습니다. 캐리지는 가이드 로드 두 개 위를 미끄러지고 용수철 네 개가 붙잡습니다. 뒤쪽 레일의 손가락 프로브가 누르고 당기며, 다이얼 게이지가 기울기를 읽습니다. 지금 값(강성 {k}, 감쇠비 {zeta})에서는 {pull} 당기면 {x0} 기울어지고, {releasePhrase}.",
+  },
+  questionDelay: 3000,
+  start: "params",
+
+  partsIntro: "부품을 누르면 그림에서 강조합니다. 용수철과 바늘처럼 가는 부품은 이 목록에서 고르면 편합니다.",
+  parts: [
+    { id: "glass", name: "유리 버튼", say: "120 × 32 크기의 버튼입니다. 누르면 부풀고, 누른 채 당기면 그쪽으로 늘어나며 기울어집니다. 지금 크기는 {size}입니다." },
+    { id: "rest", name: "쉬는 자리", say: "아무 힘도 받지 않을 때 버튼이 있는 자리입니다. 버튼이 이 점선에서 벗어날 때만 보입니다." },
+    { id: "carriage", name: "캐리지", say: "버튼을 싣고 가이드 로드 위를 좌우로 미끄러지는 받침입니다. 캐리지가 움직인 거리가 곧 기울기입니다." },
+    { id: "bushings", name: "미끄럼 부싱", say: "캐리지 네 귀퉁이에서 로드를 감싸는 통입니다. 캐리지가 로드를 따라 한 방향으로만 움직이게 합니다." },
+    { id: "springs", name: "용수철 4개", say: "양 끝에서 캐리지를 가운데로 당깁니다. 늘어나거나 줄어든 만큼 되돌리는 힘(탄성력)을 냅니다. 그림은 강성 {k}인 용수철 하나를 네 개로 나누어 보여 줍니다." },
+    { id: "rods", name: "가이드 로드", say: "프레임 양쪽을 잇는 둥근 막대 두 개입니다. 용수철이 이 막대에 끼워져 있고 캐리지가 이 위를 미끄러집니다." },
+    { id: "frame", name: "프레임", say: "로드와 용수철의 끝을 붙잡는 네모난 틀입니다. 용수철은 이 틀을 기준으로 늘어나고 줄어듭니다." },
+    { id: "frame-scale", name: "프레임 눈금", say: "앞쪽 막대의 눈금입니다. 가운데 굵은 선이 0이고, 짧은 눈금은 2 px, 긴 눈금은 10 px 간격입니다." },
+    { id: "plunger", name: "플런저", say: "캐리지에 붙은 가는 막대입니다. 캐리지와 함께 움직이며 다이얼 게이지를 밀고 당깁니다." },
+    { id: "dial", name: "다이얼 게이지", say: "플런저가 움직인 거리, 곧 기울기를 바늘로 읽습니다. 한 바퀴가 20 px, 작은 눈금 하나가 1 px입니다." },
+    { id: "needle", name: "바늘", say: "지금 기울기({lean})를 가리킵니다. 놓은 뒤 0을 지나쳐 반대쪽으로 넘어갔다 오는 모습이 감쇠 진동입니다." },
+    { id: "dial-give", name: "한계 점", say: "다이얼의 두 점은 ±{limit}입니다. 아무리 멀리 당겨도 기울기는 이 점을 넘지 않습니다." },
+    { id: "pull-line", name: "당김선", say: "처음 누른 곳에서 지금 손가락까지 이은 선입니다. 선이 길수록 많이 당긴 것입니다." },
+    { id: "finger", name: "손가락 끝", say: "버튼을 누르는 둥근 패드입니다. 내려와 누르고, 누른 채 옆으로 움직여 당깁니다." },
+    { id: "probe-arm", name: "프로브 팔", say: "손가락을 붙잡고 위아래로 움직이게 하는 몸통과 팔입니다." },
+    { id: "probe-block", name: "프로브 블록", say: "레일 위를 달리는 블록입니다. 손가락의 좌우 위치를 정합니다." },
+    { id: "rider", name: "누른 자리 표시", say: "레일 위의 작은 표시입니다. 처음 누른 자리에 남아 당긴 거리를 잴 수 있게 합니다." },
+    { id: "rail", name: "레일", say: "뒤쪽 기둥 두 개가 받치는 막대입니다. 프로브가 이 위를 좌우로 달립니다." },
+    { id: "rail-rule", name: "레일 눈금", say: "짧은 눈금은 5 px, 긴 눈금은 25 px 간격입니다. 손가락의 위치를 읽습니다." },
+    { id: "base", name: "받침판", say: "시험대 전체를 받치는 판과 다리입니다." },
+    { id: "nameplate", name: "명판", say: "장치 이름을 새기는 작은 판입니다. 이 그림에서는 글자 대신 줄로만 표시했습니다." },
+  ],
+
+  paramsIntro: "버튼을 놓은 뒤 되돌아오는 운동을 정하는 값입니다. 값을 바꾼 다음 ‘당겼다 놓기’를 눌러 보십시오. 아래 그래프가 바로 바뀝니다.",
+  params: [
+    { id: "k", type: "range", label: "강성 k", unit: "", min: 80, max: 800, step: 10, value: 320, digits: 0, help: "용수철이 단단한 정도입니다. 클수록 같은 거리에서 더 센 힘으로 되돌리고 더 빨리 진동합니다. 질량을 1로 둔 모델 단위입니다." },
+    { id: "zeta", type: "range", label: "감쇠비 ζ", unit: "", min: 0.1, max: 2, step: 0.05, value: 0.45, digits: 2, help: "움직임을 늦추는 힘(감쇠)의 크기입니다. 1보다 작으면 제자리를 지나쳐 진동하고, 1이면 지나치지 않고 가장 빨리 돌아오며, 1보다 크면 천천히 다가갑니다. ζ를 그대로 두고 k를 바꾸면 감쇠 계수 c = 2ζ√k도 함께 바뀝니다." },
+    { id: "pull", type: "range", label: "당김 거리", unit: "px", min: 10, max: 100, step: 5, value: 80, digits: 0, help: "‘당겼다 놓기’에서 손가락이 왼쪽으로 당기는 거리입니다." },
+    { id: "compare", type: "toggle", label: "세 가지 감쇠 겹쳐 보기", value: false, on: "켬", off: "끔", help: "그래프에 같은 k의 ζ 0.20, 1.00, 2.00 곡선을 함께 그립니다." },
+    { id: "drop", type: "action", label: "당겼다 놓기", help: "프로브가 버튼을 누르고 당김 거리만큼 당겼다가 놓습니다." },
+  ],
+  formulasTitle: "모델로 계산한 값",
+  formulas: [
+    { label: "감쇠비", text: "ζ = c ÷ (2√k) = {c} ÷ (2 × {w0}) = {zeta} → {regime}" },
+    { label: "고유 각진동수 (질량 1)", text: "ω₀ = √k = √{k} = {w0} rad/s" },
+    { label: "진동 주기", text: "T = 2π ÷ (ω₀√(1 − ζ²)) = {T}" },
+    { label: "복원력 (훅의 법칙)", text: "F = −k·x → 놓는 순간 {k} × {x0} = {force}" },
+    { label: "당겼을 때 기울기 (고무줄 저항)", text: "x₀ = {limit} × (1 − 1 ÷ (1 + 0.55 × {pull} ÷ {limit})) = {x0}" },
+    { label: "첫 되튐", text: "x₀ · e^(−πζ ÷ √(1 − ζ²)) = {over}" },
+    { label: "멈출 때까지", text: "{settle} (기울기가 0.1 px 안에 머물 때까지)" },
+  ],
+  formulaNote: "진동 주기와 첫 되튐은 ζ가 1보다 작을 때만 있습니다. 멈출 때까지 걸리는 시간은 그림과 같은 모델을 그대로 돌려 잰 값입니다.",
+
+  steps: [
+    {
+      title: "시험대 둘러보기",
+      text: "유리 버튼이 캐리지 위에 놓여 있습니다. 캐리지는 가이드 로드 두 개를 따라 좌우로만 움직입니다. 양 끝의 용수철 네 개가 캐리지를 가운데로 붙잡습니다. 오른쪽 다이얼 게이지는 캐리지가 움직인 거리, 곧 기울기를 읽습니다.",
+      focus: ["glass", "carriage", "springs", "dial"],
+      pose: { k: 320, zeta: 0.45, pull: 80, compare: false, act: "rest" },
+    },
+    {
+      title: "누르면 부풉니다",
+      text: "손가락이 내려와 버튼을 누르면 버튼이 조금 부풉니다. 지금 크기는 {size}입니다. 누른 직후 잠깐 더 부풀었다가 자리를 잡습니다. 부푸는 것도 용수철처럼 움직이기 때문입니다.",
+      focus: ["glass", "finger"],
+      pose: { k: 320, zeta: 0.45, pull: 80, compare: false, act: "press" },
+    },
+    {
+      title: "당기면 기울어집니다: 훅의 법칙",
+      text: "누른 채 손가락을 {pull} 당기면 버튼이 {x0} 기울어집니다. 캐리지가 옮겨 가면 한쪽 용수철은 늘어나고 반대쪽은 줄어듭니다. 용수철은 늘어나거나 줄어든 길이에 비례하는 힘으로 캐리지를 되돌리려 합니다. 이것이 훅의 법칙 F = −kx입니다.",
+      focus: ["springs", "carriage", "frame-scale", "pull-line"],
+      pose: { k: 320, zeta: 0.45, pull: 20, compare: false, act: "pull" },
+    },
+    {
+      title: "더 당겨도 덜 따라옵니다",
+      text: "이번에는 {pull} 당깁니다. 앞 단계의 4배를 당겼지만 기울기는 {x0}로 2배도 되지 않습니다. 이 버튼은 많이 당길수록 덜 따라오도록 만들어졌고, 아무리 당겨도 다이얼의 두 점(±{limit})을 넘지 않습니다. 이 규칙(고무줄 저항)은 실제 용수철의 성질이 아니라 화면 버튼을 위해 정한 것입니다.",
+      focus: ["dial", "dial-give", "pull-line"],
+      pose: { k: 320, zeta: 0.45, pull: 80, compare: false, act: "pull" },
+    },
+    {
+      title: "놓으면 감쇠 진동",
+      text: "손가락을 놓으면 용수철이 캐리지를 되돌립니다. 캐리지는 쉬는 자리를 지나쳐 반대쪽으로 {over} 넘어갔다가 돌아옵니다. 한 번 왕복하는 데 {T}가 걸리고, {settle} 뒤에 멈춥니다. 감쇠 때문에 흔들림이 점점 작아집니다. 이런 운동을 감쇠 진동이라고 합니다.",
+      focus: ["springs", "needle", "dial"],
+      pose: { k: 320, zeta: 0.45, pull: 80, compare: false, act: "release" },
+    },
+    {
+      title: "저감쇠: ζ = 0.2",
+      text: "감쇠비를 {zeta}로 낮췄습니다. 이제 캐리지는 {over}만큼 넘어가고 여러 번 흔들린 뒤 {settle}가 지나서야 멈춥니다. 감쇠비가 1보다 작은 경우를 저감쇠라고 합니다. 아래 그래프에서 점점 작아지는 물결 모양을 확인하십시오.",
+      focus: ["needle", "springs"],
+      pose: { k: 320, zeta: 0.2, pull: 80, compare: false, act: "release" },
+    },
+    {
+      title: "임계감쇠와 과감쇠",
+      text: "감쇠비가 1이면 쉬는 자리를 지나치지 않고 {settle} 만에 돌아옵니다. 이것을 임계감쇠라고 합니다. 감쇠비가 2이면 역시 지나치지 않지만 느릿느릿 다가가 {settleZ2}가 걸립니다. 이것이 과감쇠입니다. 그래프에 세 경우를 겹쳐 두었습니다.",
+      focus: ["needle"],
+      pose: { k: 320, zeta: 1, pull: 80, compare: true, act: "release" },
+    },
+    {
+      title: "강성 k가 하는 일",
+      text: "감쇠비는 {zeta} 그대로 두고 강성을 {k}까지 높였습니다. 진동 주기가 {T}로 짧아져 더 빨리 흔들리고 {settle} 만에 멈춥니다. 그런데 넘어가는 거리({over})는 처음과 거의 같습니다. 넘어가는 비율은 감쇠비만으로 정해지기 때문입니다.",
+      focus: ["springs", "needle"],
+      pose: { k: 800, zeta: 0.45, pull: 80, compare: false, act: "release" },
+    },
+  ],
+
+  questions: [
+    {
+      q: "감쇠비 ζ를 0.2에서 1.0으로 올리면, 놓은 뒤 버튼이 쉬는 자리를 지나쳐 넘어가는 거리는 어떻게 됩니까?",
+      choices: [{ label: "더 커집니다" }, { label: "조금 작아지지만 남습니다" }, { label: "0이 됩니다", correct: true }],
+      from: { k: 320, zeta: 0.2, pull: 80, compare: false, act: "release" },
+      to: { k: 320, zeta: 1, pull: 80, compare: false, act: "release" },
+      focus: ["needle", "dial"],
+      explain: "ζ 0.2에서는 {from.over} 넘어갔지만 ζ 1.0에서는 {to.over}입니다. 감쇠비가 1 이상이면 감쇠가 충분히 커서 쉬는 자리를 지나치지 않습니다. 감쇠비가 정확히 1인 경우를 임계감쇠라고 합니다. 그래프의 점선이 ζ 0.2 곡선입니다.",
+    },
+    {
+      q: "감쇠비를 0.45로 둔 채 강성 k를 80에서 320으로 4배 늘리면, 한 번 흔들리는 데 걸리는 시간(주기)은 어떻게 됩니까?",
+      choices: [{ label: "4배가 됩니다" }, { label: "2배가 됩니다" }, { label: "절반이 됩니다", correct: true }, { label: "4분의 1이 됩니다" }],
+      from: { k: 80, zeta: 0.45, pull: 80, compare: false, act: "release" },
+      to: { k: 320, zeta: 0.45, pull: 80, compare: false, act: "release" },
+      focus: ["springs", "needle"],
+      explain: "주기는 {from.T}에서 {to.T}로 {ratio.T}가 되었습니다. 주기는 √k에 반비례하므로 k가 4배이면 주기는 절반입니다. 한편 넘어가는 거리는 {from.over}, {to.over}로 거의 같습니다.",
+    },
+    {
+      q: "다음 세 감쇠비 가운데 놓은 뒤 가장 빨리 멈추는 것은 무엇입니까? (기울기가 0.1 px 안에 들어오면 멈춘 것으로 봅니다.)",
+      choices: [{ label: "ζ = 0.2" }, { label: "ζ = 1.0", correct: true }, { label: "ζ = 2.0" }],
+      from: { k: 320, zeta: 0.2, pull: 80, compare: true, act: "release" },
+      to: { k: 320, zeta: 1, pull: 80, compare: true, act: "release" },
+      focus: ["needle"],
+      explain: "ζ 0.2는 {from.settle}, ζ 1.0은 {to.settle}, ζ 2.0은 {to.settleZ2} 걸립니다. 저감쇠는 오래 흔들리고, 과감쇠는 너무 느리게 다가갑니다. 셋 가운데 임계감쇠가 가장 빠릅니다. 다만 0.1 px만큼의 작은 떨림을 허용하면 ζ 0.7 근처가 조금 더 빠릅니다({to.settleZ07}). 그래서 화면 버튼은 1보다 조금 작은 감쇠비를 즐겨 씁니다.",
+    },
+    {
+      q: "당김 거리를 20 px에서 80 px로 4배 늘리면 버튼의 기울기는 어떻게 됩니까?",
+      choices: [{ label: "4배가 됩니다" }, { label: "4배보다 훨씬 작게 늘어납니다", correct: true }, { label: "그대로입니다" }],
+      from: { k: 320, zeta: 0.45, pull: 20, compare: false, act: "pull" },
+      to: { k: 320, zeta: 0.45, pull: 80, compare: false, act: "pull" },
+      focus: ["dial", "dial-give"],
+      delay: 1800,
+      explain: "기울기는 {from.x0}에서 {to.x0}로 {ratio.x0}가 되었습니다. 조금 당길 때는 당긴 거리에 거의 비례하지만, 많이 당길수록 덜 따라오며 한계({to.limit})를 넘지 않습니다. 보통 용수철이라면 힘에 비례해 늘어나겠지만(훅의 법칙), 이 버튼은 일부러 고무줄처럼 버티도록 만들었습니다.",
+    },
+  ],
+};

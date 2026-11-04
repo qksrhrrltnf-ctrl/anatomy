@@ -1,0 +1,6 @@
+[["wait",800],["eval","(() => { document.getElementById('edu-p-freeze').click(); return 1; })()"],["wait",1500],
+ ["slow",0.2],["eval","document.querySelectorAll('.edu-seg')[0].click()"],
+ ["sheet","shots/final/ko-sources-fade-dark.png",60,8,".rt-stage",1,[150,250,420,300],4],
+ ["slow",1],["wait",1500],["slow",0.2],
+ ["eval","(() => { const i = document.getElementById('edu-p-h'); i.value = 3; i.dispatchEvent(new Event('input', { bubbles: true })); return 1; })()"],
+ ["sheet","shots/final/ko-depth-change-dark.png",120,8,".rt-stage",1,[150,250,420,300],4]]

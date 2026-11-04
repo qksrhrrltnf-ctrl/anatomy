@@ -1,0 +1,13 @@
+[["wait",600],
+ ["move","[data-piece=\"pair-0\"]",0.5,0.5],["move","[data-piece=\"pair-5\"]",0.5,0.5],["wait",300],
+ ["eval","'after hover: ' + document.querySelector('[data-readout]').textContent + ' slider=' + document.getElementById('edu-p-merge').value"],
+ ["drag","[data-piece=\"lead\"]",0.8,0.5,0.15,0.5,30],["wait",900],
+ ["eval","'after fan drag: ' + document.querySelector('[data-readout]').textContent + ' slider=' + document.getElementById('edu-p-merge').value + ' line=' + document.querySelector('.edu-line-title').textContent + ' autoplay=' + document.getElementById('edu-autoplay').getAttribute('aria-checked')"],
+ ["drag",".edu-line-svg",0.5,0.52,0.75,0.52,20],["wait",900],
+ ["eval","'after line drag: ' + document.querySelector('[data-readout]').textContent + ' slider=' + document.getElementById('edu-p-merge').value + ' line=' + document.querySelector('.edu-line-title').textContent"],
+ ["move",".edu-head",0.5,0.5],["wait",800],
+ ["eval","'after leave: ' + document.querySelector('[data-readout]').textContent"],
+ ["key","End",".ml"],["wait",900],
+ ["eval","'after End: ' + document.querySelector('[data-readout]').textContent + ' slider=' + document.getElementById('edu-p-merge').value"],
+ ["shot","shots/ko-drag-THEME.png",".edu-figure",1.5]
+]

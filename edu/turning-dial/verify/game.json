@@ -1,0 +1,16 @@
+[["wait",600],
+ ["eval","(() => { document.querySelectorAll('[aria-labelledby=\"edu-p-game-label\"] .edu-seg')[1].click(); return document.querySelector('[data-edu-status]').textContent; })()"],
+ ["eval","(() => { window.__turnBy = (clicks) => { const st = document.querySelector('.td-stage'); const key = clicks > 0 ? 'ArrowLeft' : 'ArrowRight'; for (let i = 0; i < Math.abs(clicks); i++) st.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true })); return document.querySelector('[data-readout]').textContent; }; window.__code = () => document.querySelector('[data-edu-status]').textContent.match(/번호 ([0-9]+) → ([0-9]+) → ([0-9]+)/).slice(1).map(Number); window.__R = () => Number(document.querySelector('.td-stage').getAttribute('aria-valuenow')); return JSON.stringify(window.__code()) + ' R=' + window.__R(); })()"],
+ ["eval","(() => { const [a] = window.__code(); const n = ((window.__R() - a) % 100 + 100) % 100 + 100; window.__c = window.__code(); return window.__turnBy(n); })()"],["wait",3000],
+ ["eval","document.querySelector('[data-edu-status]').textContent"],
+ ["eval","(() => { const b = window.__c[1]; const n = ((b - window.__R()) % 100 + 100) % 100; return window.__turnBy(-n); })()"],["wait",3000],
+ ["eval","document.querySelector('[data-edu-status]').textContent"],
+ ["eval","(() => { const c = window.__c[2]; const n = ((window.__R() - c) % 100 + 100) % 100; return window.__turnBy(n); })()"],["wait",300],
+ ["sheet","shots/game-led.png",150,6,".td-stage",1,[150,80,340,240],3],["wait",800],
+ ["eval","document.querySelector('[data-edu-status]').textContent"],
+ ["shot","shots/game-ok.png",".edu-figure",1],
+ ["click",".edu-status-action"],["wait",300],["eval","document.querySelector('[data-edu-status]').textContent"],
+ ["eval","(() => { const m = document.querySelector('[data-edu-status]').textContent.match(/눈금 ([0-9]+), 창 숫자 ([0-9]+)/); return m ? m[1] + ',' + m[2] : 'no goal'; })()"],
+ ["eval","(() => { window.__turnBy(-37); return document.querySelector('[data-readout]').textContent; })()"],["wait",3000],
+ ["eval","document.querySelector('[data-edu-status]').textContent"]
+]

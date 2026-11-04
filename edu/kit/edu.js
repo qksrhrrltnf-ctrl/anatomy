@@ -683,6 +683,18 @@ const EDU = (() => {
       statusBox.replaceChildren(...[h("span", { class: "edu-status-dot", "aria-hidden": "true" }), h("span", { class: "edu-status-text" }, fill(next.text)), next.action ? h("button", { class: "edu-btn edu-status-action", type: "button", onclick: () => { takeOver(); next.action.run(); } }, next.action.label) : null].filter(Boolean));
     }
 
+    // The card's caption and legend keys may hold {key} templates too: they follow the model like the panel.
+    const figure = plate.closest("figure");
+    const captionEl = figure?.querySelector(".iso-caption");
+    if (captionEl && /\{\w+\}/.test(content.card?.caption || "")) refreshers.push(() => { const text = fill(content.card.caption); if (captionEl.textContent !== text) captionEl.textContent = text; });
+    const keyEls = figure ? [...figure.querySelectorAll(".iso-key")] : [];
+    (content.card?.keys || []).forEach((key, index) => {
+      const el = keyEls[index];
+      if (!el || !/\{\w+\}/.test(key.label || "")) return;
+      const label = [...el.childNodes].find((node) => node.nodeType === 3);
+      if (label) refreshers.push(() => { label.textContent = fill(key.label); });
+    });
+
     function refresh() {
       for (const run of refreshers) run();
       if (tipPart) fillTip(tipPart);

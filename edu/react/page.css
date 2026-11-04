@@ -1,0 +1,4 @@
+/* Teaching pages are wider than the figure pages (kit eduPage default width 1440). */
+.iso-page{width:min(1440px,100% - 32px)}
+/* The kit card upper-cases its corners; a Korean hint with a Latin word (merge) should keep its case. */
+.edu .iso-plate-corner{text-transform:none}

@@ -1,0 +1,14 @@
+[["wait",800],
+ ["eval","document.querySelector('[data-readout]').textContent + ' | autoplay=' + document.getElementById('edu-autoplay')?.getAttribute('aria-checked') + ' | ' + document.querySelector('.iso-caption').textContent"],
+ ["click",".iso-stage",0.5,0.3],["wait",300],
+ ["eval","document.querySelector('[data-readout]').textContent + ' | autoplay=' + document.getElementById('edu-autoplay').getAttribute('aria-checked')"],
+ ["key","h"],["key","i"],["key"," "],["key","K", null, "KeyK"],["wait",400],
+ ["eval","document.querySelector('[data-readout]').textContent + ' || ' + [...document.querySelectorAll('.edu-formula dd')].map(d => d.textContent).join(' | ')"],
+ ["eval","(() => { document.querySelectorAll('.edu-segs')[0].querySelectorAll('.edu-seg')[2].click(); return document.querySelector('[data-readout]').textContent; })()"],
+ ["key","Escape"],["wait",1500],
+ ["eval","document.querySelector('[data-readout]').textContent + ' | power=' + document.getElementById('edu-p-power').getAttribute('aria-checked')"],
+ ["key","x"],["wait",200],["eval","document.querySelector('[data-edu-status]').textContent"],
+ ["click","[data-piece=\"rocker\"]"],["wait",1200],
+ ["eval","document.querySelector('[data-readout]').textContent + ' | power=' + document.getElementById('edu-p-power').getAttribute('aria-checked')"],
+ ["shot","shots/t-smoke.png",".edu-layout",1]
+]

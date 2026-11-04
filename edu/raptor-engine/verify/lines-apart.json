@@ -1,0 +1,4 @@
+[["wait",600],
+ ["eval","(() => { document.getElementById('edu-autoplay').click(); const i = document.getElementById('edu-p-strip'); i.value = 10; i.dispatchEvent(new Event('input', { bubbles: true })); return document.getElementById('edu-autoplay').getAttribute('aria-checked'); })()"],["wait",5000],
+ ["eval","document.querySelector('[data-readout]').textContent + ' focus=' + document.querySelector('.rp-stage').hasAttribute('data-focus')"],["lines",null]
+]

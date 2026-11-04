@@ -1,0 +1,14 @@
+[["wait",600],
+ ["click","#edu-tab-steps"],["wait",200],
+ ["click",".edu-dot:nth-child(1)"],["wait",1500],["eval","document.querySelector('.edu-step-title').textContent + ' | ' + document.querySelector('[data-readout]').textContent + ' | ' + document.querySelector('[data-edu-status]').textContent"],["shot","shots/st-1.png",".edu-layout",1],
+ ["click",".edu-dot:nth-child(2)"],["wait",2500],["eval","document.querySelector('.edu-step-title').textContent + ' | ' + document.querySelector('[data-readout]').textContent"],["shot","shots/st-2.png",".edu-layout",1],
+ ["click",".edu-dot:nth-child(3)"],["wait",1500],["shot","shots/st-3.png",".edu-layout",1],
+ ["click",".edu-dot:nth-child(4)"],["wait",1500],["shot","shots/st-4.png",".edu-layout",1],
+ ["click",".edu-dot:nth-child(5)"],["wait",4000],["eval","document.querySelector('[data-readout]').textContent + ' | ' + document.querySelector('[data-edu-status]').textContent"],["shot","shots/st-5.png",".edu-layout",1],
+ ["click",".edu-dot:nth-child(6)"],["wait",2500],["eval","document.querySelector('[data-readout]').textContent + ' | ' + document.querySelector('[data-edu-status]').textContent"],["shot","shots/st-6.png",".edu-layout",1],
+ ["click",".edu-dot:nth-child(7)"],["wait",3000],["eval","document.querySelector('[data-readout]').textContent + ' | ' + document.querySelector('[data-edu-status]').textContent"],["shot","shots/st-7.png",".edu-layout",1],
+ ["click",".edu-dot:nth-child(8)"],["wait",1500],["eval","document.querySelector('.edu-step-text').textContent"],["shot","shots/st-8.png",".edu-layout",1],
+ ["click",".edu-dot:nth-child(9)"],["wait",3000],["eval","document.querySelector('[data-readout]').textContent + ' | ' + document.querySelector('.edu-step-text').textContent"],["shot","shots/st-9.png",".edu-layout",1],
+ ["click",".edu-dot:nth-child(6)"],["wait",5000],["eval","'back to 6: ' + document.querySelector('[data-readout]').textContent + ' | ' + document.querySelector('[data-edu-status]').textContent"],
+ ["click",".edu-dot:nth-child(2)"],["wait",6000],["eval","'back to 2: ' + document.querySelector('[data-readout]').textContent + ' strip=' + document.getElementById('edu-p-strip').value"],["shot","shots/st-2b.png",".edu-figure",1]
+]

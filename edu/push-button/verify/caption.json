@@ -1,0 +1,5 @@
+[["wait",500],
+ ["eval","(() => { const set = (id, v) => { const i = document.getElementById('edu-p-' + id); i.value = v; i.dispatchEvent(new Event('input', { bubbles: true })); }; set('V', 9); set('R', 2); document.querySelectorAll('.edu-seg')[1].click(); return document.querySelector('.iso-caption').textContent.slice(95); })()"],
+ ["click",".iso-stage",0.15,0.15],["wait",2000],
+ ["eval","document.querySelector('.iso-caption').textContent.slice(95)"]
+]

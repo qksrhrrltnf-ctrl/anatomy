@@ -1,0 +1,16 @@
+[["wait",600],
+ ["eval","'scroll: ' + (document.documentElement.scrollWidth > document.documentElement.clientWidth)"],
+ ["click","#edu-tab-steps"],["wait",200],
+ ["click",".edu-dot:nth-child(1)"],["wait",1800],["click","#edu-tab-parts"],["wait",400],["eval","document.querySelector('[data-readout]').textContent"],["lines",null],
+ ["click","#edu-tab-steps"],["click",".edu-dot:nth-child(2)"],["wait",1200],["click","#edu-tab-parts"],["wait",400],["eval","document.querySelector('[data-readout]').textContent"],["lines",null],
+ ["click","#edu-tab-steps"],["click",".edu-dot:nth-child(4)"],["wait",1800],["click","#edu-tab-parts"],["wait",400],["eval","document.querySelector('[data-readout]').textContent"],["lines","shots/t-lines-pulled.png"],
+ ["click","#edu-tab-params"],["wait",200],
+ ["key","ArrowRight","#edu-p-k"],["key","ArrowRight","#edu-p-k"],
+ ["eval","'k key: ' + document.getElementById('edu-p-k').value + ' ' + document.getElementById('edu-p-k').getAttribute('aria-valuetext') + ' | ' + document.querySelector('.edu-formula:nth-child(2) dd').textContent"],
+ ["key","ArrowRight","#edu-tab-params"],["wait",200],["eval","'tab key: ' + document.activeElement.id + ' ' + document.activeElement.getAttribute('aria-selected')"],
+ ["key"," ",".ms"],["wait",700],["eval","'space: ' + document.querySelector('[data-readout]').textContent + ' held=' + document.querySelector('.ms').hasAttribute('data-held')"],
+ ["key","ArrowLeft",".ms"],["key","ArrowLeft",".ms"],["key","ArrowLeft",".ms"],["wait",900],["eval","'pull by keys: ' + document.querySelector('[data-readout]').textContent"],
+ ["key","Escape",".ms"],["wait",1500],["eval","'escape: ' + document.querySelector('[data-readout]').textContent + ' held=' + document.querySelector('.ms').hasAttribute('data-held')"],
+ ["lines",null],
+ ["eval","(() => { const stage = document.querySelector('.ms'); const h = window.EDU.mount({ stage, set() {} }); const again = window.EDU.mount({ stage, set() {} }); const same = h === again; const panel = document.querySelector('[data-edu-panel]').children.length; return 'guard same=' + same + ' panel children=' + panel; })()"]
+]

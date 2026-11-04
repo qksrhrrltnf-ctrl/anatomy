@@ -1,0 +1,16 @@
+[["wait",800],
+ ["eval","'autoplay=' + document.getElementById('edu-autoplay').getAttribute('aria-checked')"],
+ ["key","End",".rt-stage"],["wait",200],
+ ["eval","'autoplay=' + document.getElementById('edu-autoplay').getAttribute('aria-checked') + ' f-slider=' + document.getElementById('edu-p-f').value"],
+ ["key","ArrowUp",".rt-stage"],["key","ArrowUp",".rt-stage"],["wait",200],
+ ["eval","'d-slider=' + document.getElementById('edu-p-d').value + ' ' + document.querySelector('[data-edu-panel] .edu-param-value').textContent"],
+ ["wait",4000],["eval","'after 4s (no tour resume): ' + document.querySelector('[data-readout]').textContent"],
+ ["drag","[data-part=\"dipper-near\"]",0.5,0.6,0.5,2.5,20],["wait",300],
+ ["eval","'dipper drag d=' + document.getElementById('edu-p-d').value"],
+ ["drag",".rt-stage",0.2,0.5,0.8,0.3,20],["wait",300],
+ ["eval","'tank drag f=' + document.getElementById('edu-p-f').value + ' d=' + document.getElementById('edu-p-d').value"],
+ ["move",".rt-stage",0.5,0.5],["wait",300],["move",".rt-stage",0.6,0.4],["wait",300],
+ ["eval","'hover keeps f=' + document.getElementById('edu-p-f').value"],
+ ["key","ArrowRight","#edu-p-h"],["wait",100],["eval","'h=' + document.getElementById('edu-p-h').value + ' ' + document.querySelectorAll('.edu-formula dd')[1].textContent"],
+ ["key","ArrowLeft",".edu-seg[aria-checked=true]"],["wait",100],["eval","document.querySelector('.edu-seg[aria-checked=true]').textContent + ' | ' + document.querySelector('[data-readout]').textContent"]
+]

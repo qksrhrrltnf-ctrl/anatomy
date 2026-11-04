@@ -1,0 +1,10 @@
+[["wait",600],
+ ["click","#edu-tab-steps"],["wait",200],
+ ["click",".edu-dot:nth-child(1)"],["wait",2500],["click","#edu-tab-parts"],["wait",400],["eval","document.querySelector('[data-readout]').textContent"],["lines",null],
+ ["click","#edu-tab-steps"],["click",".edu-dot:nth-child(5)"],["wait",2500],["click","#edu-tab-parts"],["wait",400],["eval","document.querySelector('[data-readout]').textContent"],["lines",null],
+ ["click","#edu-tab-steps"],["click",".edu-dot:nth-child(6)"],["wait",2500],["click","#edu-tab-parts"],["wait",400],["eval","document.querySelector('[data-readout]').textContent + ' face=' + document.querySelector('[data-piece=face]').getAttribute('transform')"],["lines",null],
+ ["click","#edu-tab-steps"],["click",".edu-dot:nth-child(7)"],["wait",2500],["click","#edu-tab-parts"],["wait",400],["eval","document.querySelector('[data-readout]').textContent"],["lines",null],
+ ["click","#edu-tab-params"],["wait",200],
+ ["eval","(() => { const set = (id, v) => { const i = document.getElementById('edu-p-' + id); i.value = v; i.dispatchEvent(new Event('input', { bubbles: true })); }; set('perTurn', 7); document.querySelectorAll('.edu-segs')[1].querySelectorAll('.edu-seg')[3].click(); document.querySelectorAll('.edu-segs')[0].querySelectorAll('.edu-seg')[1].click(); return 1; })()"],["wait",2500],
+ ["eval","document.querySelector('[data-readout]').textContent + ' face=' + document.querySelector('[data-piece=face]').getAttribute('transform')"],["lines","shots/t-lines-zero3.png"]
+]

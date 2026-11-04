@@ -1,0 +1,14 @@
+[["wait",800],
+ ["eval","document.getElementById('edu-p-zoom').click(); document.getElementById('edu-p-strobe').click(); document.querySelectorAll('#edu-pane-params .edu-segs')[2].children[3].click(); 'ok'"],
+ ["wait",600],
+ ["click","#edu-p-insert"],
+ ["until","document.querySelector('[data-readout]').textContent.startsWith('구름')", 20000],
+ ["wait",1200],
+ ["eval","document.querySelector('[data-readout]').textContent"],
+ ["shot","shots/t-roll.png",".iso-stage",1.5],
+ ["until","document.querySelector('[data-readout]').textContent.startsWith('착지')", 30000],
+ ["eval","[...document.querySelectorAll('.edu-formula dd')].map(d => d.textContent).join(' | ')"],
+ ["shot","shots/t-landed.png",".iso-stage",1.5],
+ ["wait",6000],
+ ["eval","document.querySelector('[data-readout]').textContent + ' || ' + document.querySelector('[data-edu-status]').textContent"]
+]

@@ -1,0 +1,41 @@
+/* Response chart under the card (outside the drawing). Text wears text tokens; series wear the reference palette. */
+.edu-chart{
+  --c-now:var(--anatomy-strong);--c-ghost:var(--anatomy-text);--c1:#3987e5;--c2:#d95926;--c3:#199e70;
+  --c-grid:color-mix(in srgb,var(--anatomy-mid) 45%,transparent);--c-zero:var(--anatomy-mid);
+  margin:16px 0 0;padding:16px 18px 14px;background:var(--anatomy-card);box-shadow:0 0 0 1px var(--anatomy-mid);
+}
+.iso[data-theme="light"] .edu-chart{--c1:#2a78d6;--c2:#eb6834;--c3:#1baf7a}
+.edu-chart-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 12px}
+.edu-chart-title{margin:0;font-size:14px;font-weight:700;color:var(--anatomy-strong)}
+.edu-chart-sub{margin:0;font-size:12.5px;color:var(--anatomy-text)}
+.edu-chart-legend{display:flex;flex-wrap:wrap;gap:4px 16px;margin:10px 0 4px;padding:0;list-style:none;font-size:12.5px;color:var(--edu-body,var(--anatomy-text))}
+.edu-chart-legend li{display:flex;align-items:center;gap:6px}
+.edu-chart-key{width:18px;height:8px;flex:none}
+.edu-chart-key path,.edu-chart-line{fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.edu-chart-box{width:100%;overflow:hidden}
+.edu-chart-svg{display:block;touch-action:pan-y}
+.edu-chart-grid{stroke:var(--c-grid);stroke-width:1}
+.edu-chart-zero{stroke:var(--c-zero);stroke-width:1}
+.edu-chart-tick{font:11px/1 var(--anatomy-mono);fill:var(--anatomy-text);font-variant-numeric:tabular-nums}
+.edu-chart-axis{font:11.5px/1 var(--edu-font);fill:var(--anatomy-text)}
+.edu-chart [data-kind="now"]{stroke:var(--c-now)}
+.edu-chart [data-kind="ghost"]{stroke:var(--c-ghost);stroke-dasharray:5 4;stroke-width:1.5}
+.edu-chart [data-kind="c1"]{stroke:var(--c1)}
+.edu-chart [data-kind="c2"]{stroke:var(--c2)}
+.edu-chart [data-kind="c3"]{stroke:var(--c3)}
+.edu-chart-mark{stroke:var(--anatomy-card)!important;stroke-width:2;stroke-dasharray:none}
+.edu-chart-mark[data-kind="now"]{fill:var(--c-now)}
+.edu-chart-mark[data-kind="ghost"]{fill:var(--c-ghost)}
+.edu-chart-mark[data-kind="c1"]{fill:var(--c1)}
+.edu-chart-mark[data-kind="c2"]{fill:var(--c2)}
+.edu-chart-mark[data-kind="c3"]{fill:var(--c3)}
+.edu-chart-cross{stroke:var(--anatomy-muted);stroke-width:1}
+.edu-chart-dot{fill:var(--anatomy-lit);stroke:var(--anatomy-card);stroke-width:2}
+.edu-chart-read{min-height:2.9em;margin:6px 0 0;font-size:12.5px;line-height:1.45;color:var(--anatomy-text);font-variant-numeric:tabular-nums}
+.edu-chart-table{margin-top:6px;font-size:12.5px;color:var(--anatomy-text)}
+.edu-chart-table summary{cursor:pointer;color:var(--anatomy-strong)}
+.edu-chart-table table{width:100%;margin-top:8px;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.edu-chart-table th,.edu-chart-table td{padding:4px 6px;border-bottom:1px solid var(--c-grid);text-align:right;font-weight:400}
+.edu-chart-table th[scope="row"],.edu-chart-table thead th:first-child{text-align:left}
+.edu-chart-table thead th{color:var(--anatomy-strong)}
+@media (max-width:560px){.edu-chart{padding:14px 12px 12px}.edu-chart-table{overflow-x:auto}}

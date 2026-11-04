@@ -65,20 +65,23 @@ export function checkContent(content) {
  * @param {string} [o.css]    the figure's own CSS
  * @param {string} o.script   the figure's script: kitScript() (+ glScript()) + live; it calls EDU.mount(adapter)
  * @param {string} [o.head]   extra markup before the plate inside the card body (a PDF button, say)
- * @param {number} [o.width]  page width in px (default 1120)
+ * @param {number} [o.width]  page width in px (default 1440: the figure takes what the 400 px panel leaves)
+ * @param {object} [o.values]  first-paint text for {key} templates in card.caption and card.keys, e.g. { V: "1.5 V" };
+ *                              the runtime refills them from adapter.values() on every refresh()
  * @param {string} [o.figureClass]  extra class on the figure wrapper (.edu-figure), for CSS scoped to the example (e.g. "rp")
  * @param {string} [o.pageClass]    extra class on the page wrapper (.edu)
  */
-export function eduPage({ content, theme = "dark", stage, css = "", script, head = "", width = 1120, figureClass = "", pageClass = "" }) {
+export function eduPage({ content, theme = "dark", stage, css = "", script, head = "", width = 1440, figureClass = "", pageClass = "", values = {} }) {
   checkContent(content);
   const card = content.card;
+  const first = (text) => (text ? String(text).replace(/\{([A-Za-z_]\w*)\}/g, (match, key) => (values[key] ?? match)) : text);
   const plate = k.plateHtml({
     fig: card.fig || "그림 1",
     title: card.title,
     hint: card.hint || "",
     readout: card.readout || "",
-    keys: card.keys || [],
-    caption: card.caption,
+    keys: (card.keys || []).map((key) => ({ ...key, label: first(key.label) })),
+    caption: first(card.caption),
     body: `${head}${stage}<div class="edu-status" data-edu-status role="status" aria-live="polite"></div><div class="edu-tip" data-edu-tip role="tooltip" id="edu-tip" hidden></div>`,
   });
   const page = content.page || {};

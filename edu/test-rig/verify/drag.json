@@ -1,0 +1,7 @@
+[["wait",600],
+ ["drag",".ms",0.62,0.5,0.32,0.5,30],["wait",60],
+ ["eval","document.querySelector('[data-readout]').textContent + ' autoplay=' + document.getElementById('edu-autoplay').getAttribute('aria-checked')"],
+ ["wait",1500],
+ ["eval","document.querySelector('.edu-chart-legend').textContent + ' | ' + document.querySelector('[data-readout]').textContent"],
+ ["shot","shots/ko-drag-THEME.png",".edu-figure",1.5]
+]

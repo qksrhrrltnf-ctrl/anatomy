@@ -517,8 +517,9 @@ status();
 draw();
 `;
 
-const caption = `${fmtV(VOLTS)} 전지와 작은 전구를 누름 버튼과 함께 하나의 고리로 이었습니다. 용수철이 구리 다리판을 두 접점 기둥 위로 띄워 두므로 평소에는 열린 회로입니다. 누름단추를 누르면 다리판이 두 기둥에 닿아 닫힌 회로가 되고, 저항 ${OHMS} Ω인 전구에 ${fmtA(AMPS)}의 전류가 흘러 ${fmtW(VOLTS * AMPS)}로 빛납니다. 손을 떼면 용수철이 다리판을 다시 들어 올립니다.`;
 
 const stageHtml = `<div class="iso-stage" tabindex="0" role="button" aria-pressed="false" data-flow aria-label="누름 버튼(순간 스위치): 그림을 누르고 있거나 스페이스 키를 누르고 있으면 회로가 닫혀 전구가 켜집니다">${svg}</div>`;
-const html = eduPage({ content: { ...content, card: { ...content.card, caption } }, theme, stage: stageHtml, css: CSS, script: kitScript() + live });
+// First paint before the script runs: the same numbers the model gives at its defaults.
+const firstValues = { V: fmtV(VOLTS), R: `${OHMS} Ω`, I: fmtA(AMPS), P: fmtW(VOLTS * AMPS), circuit: "열린 회로" };
+const html = eduPage({ content, theme, stage: stageHtml, css: CSS, script: kitScript() + live, values: firstValues });
 writePage(HERE, theme === "light" ? "push-button-ko-light.html" : "push-button-ko.html", html);

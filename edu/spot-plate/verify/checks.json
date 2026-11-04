@@ -1,0 +1,18 @@
+[["wait",600],
+ ["eval","'scroll: ' + (document.documentElement.scrollWidth > document.documentElement.clientWidth)"],
+ ["click","#edu-tab-steps"],["wait",200],
+ ["click",".edu-dot:nth-child(1)"],["wait",1500],["click","#edu-tab-parts"],["wait",400],["eval","document.querySelector('[data-readout]').textContent"],["lines",null],
+ ["click","#edu-tab-steps"],["click",".edu-dot:nth-child(3)"],["wait",1500],["click","#edu-tab-parts"],["wait",400],["eval","document.querySelector('[data-readout]').textContent"],["lines",null],
+ ["click","#edu-tab-steps"],["click",".edu-dot:nth-child(4)"],["wait",1500],["click","#edu-tab-parts"],["wait",400],["eval","document.querySelector('[data-readout]').textContent"],["lines","shots/t-lines-kiss.png"],
+ ["click","#edu-tab-steps"],["click",".edu-dot:nth-child(6)"],["wait",1500],["click","#edu-tab-parts"],["wait",400],["eval","document.querySelector('[data-readout]').textContent"],["lines",null],
+ ["click","#edu-tab-steps"],["click",".edu-dot:nth-child(7)"],["wait",1500],["click","#edu-tab-parts"],["wait",400],["eval","document.querySelector('[data-readout]').textContent"],["lines",null],
+ ["click","#edu-tab-params"],["wait",200],
+ ["key","ArrowLeft","#edu-p-merge"],["key","ArrowLeft","#edu-p-merge"],["wait",800],
+ ["eval","'slider key: ' + document.getElementById('edu-p-merge').value + ' ' + document.querySelector('[data-readout]').textContent + ' | ' + document.querySelector('.edu-formula dd').textContent"],
+ ["key","ArrowRight",".edu-seg[aria-checked=true]"],["wait",300],
+ ["eval","'choice key: ' + document.querySelector('.edu-seg[aria-checked=true]').textContent + ' focus=' + document.querySelectorAll('[data-edu-on]').length + ' | ' + document.querySelector('.edu-formula:nth-child(4) dd').textContent"],
+ ["key","PageUp",".ml"],["wait",900],["eval","'figure PageUp: ' + document.querySelector('[data-readout]').textContent + ' slider=' + document.getElementById('edu-p-merge').value"],
+ ["key","Home",".ml"],["wait",900],["eval","'figure Home: ' + document.querySelector('[data-readout]').textContent + ' slider=' + document.getElementById('edu-p-merge').value"],
+ ["lines",null],
+ ["eval","(() => { const stage = document.querySelector('.ml'); const h = window.EDU.mount({ stage, set() {} }); const again = window.EDU.mount({ stage, set() {} }); return 'guard same=' + (h === again) + ' panel children=' + document.querySelector('[data-edu-panel]').children.length; })()"]
+]

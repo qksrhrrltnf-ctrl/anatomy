@@ -1,0 +1,9 @@
+[["wait",500],["click","#edu-autoplay"],["wait",1800],
+ ["eval","'before hover: ' + document.querySelector('[data-readout]').textContent"],
+ ["move",".iso-stage",0.3,0.5],["move",".iso-stage",0.7,0.5],["move","[data-piece=\"block-3\"]",0.5,0.5],["wait",1200],
+ ["eval","'after hover: ' + document.querySelector('[data-readout]').textContent + ' tip=' + !document.querySelector('[data-edu-tip]').hidden"],
+ ["key","ArrowLeft"],["wait",1800],["eval","document.querySelector('[data-readout]').textContent + ' seg=' + document.querySelector('.edu-seg[aria-checked=true]').textContent"],
+ ["key","ArrowRight","#edu-p-perTurn"],["eval","document.getElementById('edu-p-perTurn').getAttribute('aria-valuetext') + ' | ' + document.querySelector('.edu-formula dd').textContent"],
+ ["key","ArrowRight",".edu-segs .edu-seg[aria-checked=true]"],["wait",1800],["eval","document.querySelector('[data-readout]').textContent"],
+ ["click","[data-piece=\"bezel\"]",0.3,0.9],["wait",800],["eval","document.querySelector('[data-readout]').textContent"]
+]

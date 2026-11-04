@@ -1,0 +1,14 @@
+[["wait",700],
+ ["click","#edu-tab-questions"],["wait",200],
+ ["eval","(() => { document.querySelectorAll('.edu-q')[0].querySelectorAll('.edu-choice')[0].click(); return 1; })()"],["wait",3800],
+ ["eval","JSON.stringify(window.__raptor().burn) + ' strip=' + window.__raptor().stripWant + ' | ' + document.querySelector('[data-readout]').textContent"],
+ ["eval","(() => { document.querySelectorAll('.edu-q')[1].querySelectorAll('.edu-choice')[1].click(); return 1; })()"],["wait",3800],
+ ["eval","JSON.stringify(window.__raptor().burn) + ' | ' + document.querySelector('[data-readout]').textContent"],
+ ["eval","(() => { document.querySelectorAll('.edu-q')[2].querySelectorAll('.edu-choice')[0].click(); return 1; })()"],["wait",1500],
+ ["eval","'q3 mid: ' + JSON.stringify(window.__raptor().burn) + ' | ' + document.querySelector('[data-readout]').textContent"],["wait",2300],
+ ["eval","'q3 end: ' + JSON.stringify(window.__raptor().burn) + ' | ' + document.querySelector('[data-readout]').textContent"],["wait",3000],
+ ["eval","'q3 +3s: ' + JSON.stringify(window.__raptor().burn) + ' | ' + document.querySelector('[data-readout]').textContent"],
+ ["eval","(() => { document.querySelectorAll('.edu-q')[3].querySelectorAll('.edu-choice')[2].click(); return 1; })()"],["wait",3800],
+ ["eval","[...document.querySelectorAll('.edu-q-explain')].map(p => p.textContent).join(' || ')"],
+ ["eval","JSON.stringify(window.__raptor().burn) + ' | ' + document.querySelector('[data-readout]').textContent + ' | ' + document.querySelector('[data-edu-status]').textContent"]
+]
