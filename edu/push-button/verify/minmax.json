@@ -1,0 +1,14 @@
+[["wait",600],
+ ["eval","(() => { const set = (id, v) => { const i = document.getElementById('edu-p-' + id); i.value = v; i.dispatchEvent(new Event('input', { bubbles: true })); }; set('V', 1.5); set('R', 20); document.querySelectorAll('.edu-seg')[1].click(); return 'ok'; })()"],
+ ["click",".iso-stage",0.3,0.3],["wait",1500],
+ ["eval","[...document.querySelectorAll('.edu-formula dd')].map(d => d.textContent).join(' | ') + ' || ' + document.querySelector('[data-edu-status]').textContent + ' || ' + document.querySelector('[data-pb-label=plate]').textContent"],
+ ["shot","shots/t-min.png",".edu-layout",1],
+ ["eval","(() => { const set = (id, v) => { const i = document.getElementById('edu-p-' + id); i.value = v; i.dispatchEvent(new Event('input', { bubbles: true })); }; set('V', 9); set('R', 2); return 'ok'; })()"],
+ ["wait",350],
+ ["eval","[...document.querySelectorAll('.edu-formula dd')].map(d => d.textContent).join(' | ') + ' || ' + document.querySelector('[data-edu-status]').textContent"],
+ ["shot","shots/t-max-hot.png",".edu-layout",1],
+ ["wait",1500],
+ ["eval","[...document.querySelectorAll('.edu-formula dd')].map(d => d.textContent).join(' | ') + ' || ' + document.querySelector('[data-edu-status]').textContent"],
+ ["shot","shots/t-max-burnt.png",".edu-layout",1],
+ ["lines","shots/t-lines-burnt.png"]
+]

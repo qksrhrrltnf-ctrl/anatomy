@@ -1,0 +1,14 @@
+[["wait",500],
+ ["key","ArrowRight","#edu-p-V"],["key","ArrowRight","#edu-p-V"],
+ ["eval","document.getElementById('edu-p-V').value + ' ' + document.getElementById('edu-p-V').getAttribute('aria-valuetext') + ' | ' + document.querySelector('.edu-formula dd').textContent"],
+ ["key","ArrowRight",".edu-seg[aria-checked=true]"],
+ ["eval","document.querySelector('.edu-seg[aria-checked=true]').textContent + ' | hint=' + document.querySelector('[data-corner=hint]').textContent"],
+ ["key"," ",".iso-stage"],["wait",900],
+ ["eval","document.querySelector('[data-readout]').textContent + ' pressed=' + document.querySelector('.iso-stage').getAttribute('aria-pressed')"],
+ ["shot","shots/t-keys.png",".edu-figure",1],
+ ["key"," ",".iso-stage"],["wait",900],
+ ["eval","document.querySelector('[data-readout]').textContent"],
+ ["key","ArrowRight","#edu-tab-params"],["wait",200],
+ ["eval","document.activeElement.id + ' ' + document.activeElement.getAttribute('aria-selected')"],
+ ["key","Tab"],["shot","shots/t-focus.png",".edu-panel",1]
+]

@@ -1,0 +1,8 @@
+[["wait",600],
+ ["click","#edu-tab-steps"],["wait",200],
+ ["click",".edu-dot:nth-child(1)"],["wait",1200],["click","#edu-tab-parts"],["wait",400],["eval","document.querySelector('[data-readout]').textContent"],["lines",null],
+ ["click","#edu-tab-steps"],["click",".edu-dot:nth-child(2)"],["wait",1200],["click","#edu-tab-parts"],["wait",400],["eval","document.querySelector('[data-readout]').textContent"],["lines",null],
+ ["click","#edu-tab-steps"],["click",".edu-dot:nth-child(3)"],["wait",1200],["click","#edu-tab-parts"],["wait",400],["eval","document.querySelector('[data-readout]').textContent"],["lines",null],
+ ["click","#edu-tab-steps"],["click",".edu-dot:nth-child(7)"],["wait",2500],["click","#edu-tab-parts"],["wait",400],["eval","document.querySelector('[data-readout]').textContent"],["lines",null],
+ ["click","#edu-tab-params"],["wait",200],["eval","(() => { document.querySelector('.edu-switch').click(); document.querySelector('.edu-status-action').click(); return document.querySelector('[data-readout]').textContent + ' flow=' + document.querySelector('.iso-stage').hasAttribute('data-flow'); })()"],["wait",800],["lines",null]
+]

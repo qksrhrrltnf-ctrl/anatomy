@@ -1,0 +1,9 @@
+[["wait",300],["eval","document.querySelector('[data-readout]').textContent"],["wait",1500],["eval","document.querySelector('[data-readout]').textContent + ' autoplay=' + document.getElementById('edu-autoplay').getAttribute('aria-checked')"],
+ ["click","#edu-p-tap"],["wait",100],["eval","document.querySelector('[data-readout]').textContent + ' autoplay=' + document.getElementById('edu-autoplay').getAttribute('aria-checked')"],
+ ["wait",1500],["eval","document.querySelector('[data-readout]').textContent"],
+ ["click","#edu-tab-parts"],["click",".edu-parts li:nth-child(3) .edu-part"],["wait",300],
+ ["eval","document.querySelectorAll('[data-edu-on],[data-edu-path]').length + ' marked, focus=' + document.querySelector('.iso-svg').getAttribute('data-edu-focus')"],
+ ["shot","shots/t-tone.png",".iso-plate",1],
+ ["key","Escape",".edu-parts li:nth-child(3) .edu-part"],["eval","document.querySelectorAll('[data-edu-on]').length"],
+ ["eval","(() => { const h = window.EDU.mount({ stage: document.querySelector('.iso-stage'), set() {} }); const again = window.EDU.mount({ stage: document.querySelector('.iso-stage'), set() {} }); const same = h === again; h.destroy(); return 'same=' + same + ' panel=' + document.querySelector('[data-edu-panel]').children.length + ' status=' + document.querySelector('[data-edu-status]').textContent.length; })()"]
+]
