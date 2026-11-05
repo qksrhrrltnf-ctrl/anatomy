@@ -1,0 +1,29 @@
+/* Wind turbine teaching figure. */
+.wt-stage { touch-action: none; cursor: grab; --wt-air: var(--anatomy-blue); --wt-curve: var(--anatomy-hi); }
+.wt-stage[data-grab] { cursor: grabbing; }
+.wt-blade { fill: var(--anatomy-shade-3); stroke: none; }
+.wt-arrow-fill { fill: var(--anatomy-lit-top); stroke: none; }
+.wt-cup { fill: var(--anatomy-hi); stroke: none; }
+.wt-vane-fill { fill: var(--anatomy-shade-2); stroke: none; }
+.wt-air circle { fill: var(--wt-air); stroke: none; }
+.wt-stage:not([data-air]) .wt-air { display: none; }
+.wt-air-back circle { opacity: .35; }
+.wt-air-front circle { opacity: .7; }
+/* the power curve under the drawing */
+.wt-chart { display: block; width: 100%; max-width: 640px; height: auto; margin: 6px auto 0; overflow: visible; font-family: var(--edu-font, system-ui); }
+.wt-ch-axis { fill: none; stroke: var(--anatomy-mid); stroke-width: 1; }
+.wt-ch-tick { stroke: var(--anatomy-mid); stroke-width: 1; }
+.wt-ch-grid { stroke: var(--anatomy-faint); stroke-width: .6; }
+.wt-ch-label { fill: var(--anatomy-text); font-size: 10px; }
+.wt-ch-band { stroke: none; }
+.wt-ch-band[data-r="idle"], .wt-ch-band[data-r="storm"] { fill: color-mix(in srgb, var(--anatomy-mid) 12%, transparent); }
+.wt-ch-band[data-r="partial"] { fill: color-mix(in srgb, var(--anatomy-blue) 9%, transparent); }
+.wt-ch-band[data-r="rated"] { fill: color-mix(in srgb, var(--anatomy-green) 9%, transparent); }
+.wt-ch-betz { fill: none; stroke: var(--anatomy-red); stroke-width: 1; stroke-dasharray: 2 3; }
+.wt-ch-wind { fill: none; stroke: var(--anatomy-mid); stroke-width: 1; stroke-dasharray: 4 3; }
+.wt-ch-curve { fill: none; stroke: var(--wt-curve); stroke-width: 2; stroke-linejoin: round; }
+.wt-ch-mark { stroke: var(--anatomy-mid); stroke-width: .8; }
+.wt-ch-mark-label { fill: var(--anatomy-strong); font-size: 10px; }
+.wt-ch-drop { fill: none; stroke: var(--anatomy-blue); stroke-width: .8; stroke-dasharray: 2 2; }
+.wt-ch-dot { fill: var(--anatomy-blue); stroke: var(--anatomy-card); stroke-width: 1.5; }
+.wt-ch-key { fill: var(--anatomy-text); font-size: 9.5px; }

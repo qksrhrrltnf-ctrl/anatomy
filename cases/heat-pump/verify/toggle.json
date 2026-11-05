@@ -1,0 +1,7 @@
+[["wait",600],
+ ["click","[data-piece=\"solenoid\"]"],["wait",2500],
+ ["eval","document.querySelector('[data-readout]').textContent + ' | mode=' + document.querySelector('.iso-stage').dataset.mode + ' | ' + document.querySelector('.iso-caption').textContent"],
+ ["shot","shots/t-cool.png",".iso-plate",1.5],
+ ["key"," ",".iso-stage"],["wait",300],["shot","shots/t-mid.png",".iso-stage",1.5],["wait",2200],
+ ["eval","document.querySelector('[data-readout]').textContent + ' | ' + [...document.querySelectorAll('.edu-formula dd')].map(d => d.textContent).join(' | ')"]
+]

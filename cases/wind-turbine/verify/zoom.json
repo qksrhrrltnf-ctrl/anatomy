@@ -1,0 +1,2 @@
+[["wait",1200],["eval","(() => { const r = document.querySelector('.iso-stage svg').getBoundingClientRect(); return r.width + 'x' + r.height; })()"],
+ ["shot","shots/z-nacelle.png",".iso-stage",3,[300,150,320,240]]]

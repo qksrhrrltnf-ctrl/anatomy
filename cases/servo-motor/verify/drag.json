@@ -1,0 +1,15 @@
+[["wait",400],
+ ["drag","[data-piece=\"knob\"]",0.8,0.4,0.2,0.6,24],["wait",300],
+ ["eval","'knob ccw → pwm=' + document.getElementById('edu-p-pwm').value + ' | ' + document.querySelector('[data-readout]').textContent + ' | autoplay=' + document.getElementById('edu-autoplay').getAttribute('aria-checked')"],
+ ["wait",1500],["shot","shots/t-knob.png",".iso-plate",1],
+ ["key","ArrowRight",".iso-stage"],["key","ArrowRight",".iso-stage"],["wait",200],
+ ["eval","'keys → pwm=' + document.getElementById('edu-p-pwm').value + ' | ' + document.querySelector('[data-readout]').textContent"],
+ ["wait",1500],
+ ["eval","[...document.querySelectorAll('.edu-formula dd')].slice(0,3).map(d => d.textContent).join(' | ')"],
+ ["click","#edu-p-twist"],["wait",300],
+ ["eval","'twist: ' + document.querySelector('[data-readout]').textContent + ' | ' + document.querySelector('[data-edu-status]').textContent"],
+ ["shot","shots/t-twist.png",".edu-figure",1],
+ ["wait",2500],["eval","document.querySelector('[data-readout]').textContent"],
+ ["eval","(() => { document.querySelectorAll('.edu-seg')[0].click(); return 1; })()"],["wait",1200],["lines",null],
+ ["eval","(() => { document.querySelectorAll('.edu-seg')[2].click(); return document.querySelector('[data-gear=g4]').querySelectorAll('path').length; })()"],["wait",1200],["lines",null]
+]

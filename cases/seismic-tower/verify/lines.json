@@ -1,0 +1,6 @@
+[["wait",600],
+ ["eval","document.getElementById('edu-autoplay').click(), 1"],
+ ["eval","(() => { const set = (id, v) => { const i = document.getElementById('edu-p-' + id); i.value = v; i.dispatchEvent(new Event('input', { bubbles: true })); }; set('N', 15); set('f', 0.65); return document.querySelector('[data-readout]').textContent; })()"],["wait",600],["lines","shots/t-lines-n15.png"],
+ ["eval","(() => { const set = (id, v) => { const i = document.getElementById('edu-p-' + id); i.value = v; i.dispatchEvent(new Event('input', { bubbles: true })); }; set('N', 3); set('f', 0.4); document.getElementById('edu-p-iso').click(); return document.querySelector('[data-readout]').textContent; })()"],["wait",600],["lines","shots/t-lines-iso.png"],
+ ["eval","(() => { const set = (id, v) => { const i = document.getElementById('edu-p-' + id); i.value = v; i.dispatchEvent(new Event('input', { bubbles: true })); }; set('N', 10); set('f', 1); document.getElementById('edu-p-iso').click(); document.getElementById('edu-p-tmd').click(); return document.querySelector('[data-readout]').textContent; })()"],["wait",600],["lines","shots/t-lines-tmd.png"]
+]

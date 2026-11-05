@@ -1,0 +1,9 @@
+[["wait",600],
+ ["key","ArrowRight",".iso-stage"],["key","ArrowRight",".iso-stage"],["wait",300],
+ ["eval","document.querySelector('[data-readout]').textContent + ' | slider ' + document.getElementById('edu-p-f').value + ' | autoplay=' + document.getElementById('edu-autoplay').getAttribute('aria-checked')"],
+ ["drag",".st-chart-svg",0.2,0.5,0.47,0.5,15],["wait",400],
+ ["eval","document.querySelector('[data-readout]').textContent + ' | slider ' + document.getElementById('edu-p-f').value"],
+ ["click","#edu-p-sweep"],["wait",8000],
+ ["eval","document.querySelector('[data-readout]').textContent + ' | slider ' + document.getElementById('edu-p-f').value"],
+ ["shot","shots/ko-sweep-dark.png",".iso-plate",1]
+]

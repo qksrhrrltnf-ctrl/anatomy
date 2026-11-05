@@ -1,0 +1,4 @@
+[["wait",800],["eval","(() => { const r = document.querySelector('.iso-stage').getBoundingClientRect(); return r.width + 'x' + r.height; })()"],
+ ["shot","shots/z-machine.png",".iso-stage",4,[440,120,260,200]],
+ ["shot","shots/z-indoor.png",".iso-stage",3,[140,60,300,280]],
+ ["shot","shots/z-fan.png",".iso-stage",3,[600,170,240,220]]]

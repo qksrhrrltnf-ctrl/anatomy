@@ -1,0 +1,163 @@
+// 서보 모터 교육판 콘텐츠 (edu-kit 스키마: edu/kit/README.md).
+// 중괄호 {키}는 그림의 모델(model.mjs)이 그 순간 계산한 값으로 바뀝니다.
+const piece = (id) => `[data-piece="${id}"]`;
+
+export default {
+  lang: "ko",
+  page: {
+    title: "서보 모터 · 교육판",
+    kicker: "고등학교 기술·가정 · 로봇과 제어 기술",
+    heading: "서보 모터: 펄스 폭으로 각도를 지키는 되먹임 제어",
+    lead: "로봇 팔의 관절과 아두이노 실습에서 가장 많이 쓰는 서보 모터를 앞벽을 잘라 들여다봅니다. 펄스 폭이 목표 각도를 정하고, 가변저항이 지금 각도를 재고, 그 차이(오차)만큼 모터를 돌리는 닫힌 되먹임 고리를 확인하십시오. P 게인, 감속비, 매단 추의 무게를 바꾸어 응답이 빨라지거나 지나치거나 처지는 까닭을 설명할 수 있으면 목표를 이룬 것입니다.",
+    footer: "모델: MG996R급 서보를 단순화했습니다. 6 V 전원, 직류 모터(역기전력 상수 약 0.0044 V·s/rad, 저항 약 3 Ω), 기어 효율 70 %, 순수 비례(P) 제어로 계산합니다. 실제 서보의 제어 회로는 데드밴드와 미분 보정이 있어 오버슈트가 더 작고, 회전자 관성은 움직임이 눈에 보이도록 정한 값입니다. 기어의 잇수는 그림에 그린 그대로이고, 빠르게 도는 앞단 기어는 흐리게 그렸습니다. 추 걸이의 무게와 줄의 늘어남은 무시합니다.",
+  },
+  card: {
+    fig: "그림 1",
+    title: "서보 모터",
+    hint: "손잡이 끌기 · 바늘 비틀기",
+    readout: "목표 90° · 실제 90.0°",
+    keys: [
+      { mark: "lit", label: "혼과 지시 바늘: 출력축과 함께 도는 부분" },
+      { mark: "red", label: "빨간 쐐기: 펄스 폭이 정한 목표 각도 ({target})" },
+      { mark: "raised", label: "가변저항: 출력축 아래에서 지금 각도를 잽니다" },
+    ],
+    caption: "앞벽 두 장을 잘라 낸 서보 모터입니다. 제어 보드가 {pwm} 폭의 펄스를 20 ms마다 보내면 목표 각도는 {target}입니다. 출력축 아래의 가변저항이 지금 각도를 재고, 제어 회로가 오차에 P 게인 {kp}를 곱한 전압으로 모터를 돌립니다. 모터의 빠른 회전은 네 단 기어({ratio})를 지나며 느려지고 힘이 세집니다. 드럼에 감긴 줄이 {loadCase}, 멈춘 뒤 바늘은 {thEnd}에 섭니다(처짐 {ess}).",
+  },
+  keep: [".sv-target", ".sv-oled"],
+  questionDelay: 1800,
+  start: "params",
+
+  parts: [
+    { id: "horn", name: "혼과 지시 바늘", say: "출력축 끝에 끼운 팔입니다. 로봇 팔이라면 여기에 다음 마디가 붙습니다. 바늘 끝이 각도판에서 지금 각도 {th}를 가리킵니다.", select: piece("horn") },
+    { id: "drum", name: "드럼", say: "혼 위에 얹은 작은 원통입니다. 반지름 5 mm에 줄이 감겨, 추의 무게가 출력축에 {tauL}의 토크로 걸립니다.", select: piece("drum") },
+    { id: "protractor", name: "각도판", say: "0°부터 180°까지 5°마다 눈금을 새긴 판입니다. 빨간 쐐기는 펄스가 명령한 목표 각도 {target}입니다.", select: piece("protractor") },
+    { id: "gears", name: "4단 감속 기어", say: "10잇 피니언이 큰 기어를 네 번 돌려 감속비 {ratio}을 만듭니다(잇수 {teeth}). 속도는 그만큼 느려지고 토크는 커집니다.", select: piece("gears") },
+    { id: "motor", name: "직류 모터", say: "전압을 걸면 빠르게 돕니다. 전압의 부호를 바꾸면 반대로 돕니다. 지금 걸린 전압은 {volts}입니다.", select: piece("motor") },
+    { id: "pot", name: "가변저항(위치 센서)", say: "출력축과 같이 도는 저항입니다. 각도에 비례하는 전압을 내어 제어 회로가 지금 각도를 압니다. 되먹임 고리의 눈입니다.", select: piece("pot") },
+    { id: "pcb", name: "제어 회로", say: "펄스 폭으로 목표 각도를, 가변저항으로 지금 각도를 읽고 그 차이(오차)에 P 게인을 곱해 모터 전압을 정합니다. 네 개의 트랜지스터(H 브리지)가 전압의 방향을 바꿉니다.", select: piece("pcb") },
+    { id: "case", name: "케이스와 기어판", say: "모터와 가변저항을 붙잡고 기어 축을 받칩니다. 앞쪽 두 벽은 안을 보이려고 잘라 냈습니다. 양쪽 날개의 고무 부싱으로 기둥에 고정합니다.", select: piece("case") },
+    { id: "cable", name: "3선 케이블", say: "전원(+), 접지(−), 신호선 세 가닥입니다. 가장 밝은 선이 PWM 신호선입니다.", select: piece("cable") },
+    { id: "ctrl", name: "제어 보드", say: "아두이노 같은 마이크로컨트롤러 보드입니다. 20 ms마다 {pwm} 폭의 펄스를 만들어 신호선으로 보냅니다.", select: piece("ctrl") },
+    { id: "knob", name: "손잡이(가변저항)", say: "아두이노 Knob 예제처럼 손잡이를 돌리면 펄스 폭이 1.00 ms에서 2.00 ms 사이로 바뀝니다. 그림에서 끌어 돌릴 수 있습니다.", select: piece("knob") },
+    { id: "oled", name: "화면", say: "보드가 보내는 펄스의 모양과 폭({pwm}), 목표 각도를 보여 줍니다.", select: piece("oled") },
+    { id: "pulley", name: "도르래", say: "줄의 방향을 아래로 바꿉니다. 줄이 감기면 함께 돕니다.", select: piece("pulley") },
+    { id: "load", name: "추와 줄", say: "0.25 kg짜리 홈 추를 걸이에 쌓습니다. 지금 {load}입니다. 바늘이 0°에서 180°로 돌면 추가 드럼 반 바퀴 둘레만큼(약 16 mm) 올라갑니다.", select: piece("load") },
+    { id: "stand", name: "받침 기둥과 작업대", say: "육각 기둥 네 개가 서보의 날개를 받치고 나사로 고정합니다.", select: piece("stand") },
+  ],
+  partsIntro: "그림에서 부품에 마우스를 올리거나 목록에서 고르십시오. 케이블과 줄처럼 가는 부품은 목록에서 고르는 편이 쉽습니다.",
+
+  paramsIntro: "값을 바꾸면 그림, 판독값, 응답 그래프가 함께 바뀝니다. 그림 오른쪽의 손잡이를 끌거나 바늘을 손으로 비틀어 보십시오.",
+  params: [
+    { id: "pwm", type: "range", label: "펄스 폭 (목표 각도)", unit: "ms", min: 1.0, max: 2.0, step: 0.01, value: 1.5, digits: 2, help: "1.00 ms는 0°, 1.50 ms는 90°, 2.00 ms는 180°입니다. 펄스는 20 ms마다 한 번 옵니다." },
+    { id: "kp", type: "range", label: "P 게인 Kp", unit: "V/°", min: 0.02, max: 0.4, step: 0.01, value: 0.06, digits: 2, help: "오차 1°마다 모터에 거는 전압입니다. 크면 빠르지만 지나치고, 작으면 느리고 추에 더 처집니다." },
+    { id: "gear", type: "choice", label: "기어 세트 (감속비)", value: "std", options: [{ value: "fast", label: "빠름 1:98" }, { value: "std", label: "표준 1:203" }, { value: "strong", label: "강함 1:401" }], help: "같은 모터에 잇수가 다른 기어를 끼웁니다. 감속비가 크면 힘은 세지고 속도는 느려집니다." },
+    { id: "load", type: "range", label: "추의 질량", unit: "kg", min: 0, max: 2, step: 0.25, value: 0, digits: 2, help: "드럼 반지름 5 mm에 걸리는 무게입니다. 2 kg이면 약 0.10 N·m의 토크입니다." },
+    { id: "twist", type: "action", label: "바늘을 손으로 30° 비틀었다 놓기", help: "되먹임 제어가 오차를 보고 바늘을 되돌리는 모습을 봅니다." },
+  ],
+  formulasTitle: "모델로 계산한 값",
+  formulas: [
+    { label: "목표 각도 (펄스 폭 → 각도)", text: "θ* = (w − 1.00 ms) × 180° ÷ 1.00 ms = ({pwm} − 1.00 ms) × 180°/ms = {target}" },
+    { label: "오차 (지금)", text: "e = θ* − θ = {target} − {thP} = {err}" },
+    { label: "모터 전압 (P 제어, 최대 ±6 V)", text: "V = Kp × e = {kp} × {err} = {volts}" },
+    { label: "감속비", text: "N = ({teeth}) ÷ 10⁴ = {ratio}" },
+    { label: "멈출 때 토크 · 최고 속도", text: "τ = {stall} ({stallKg}) · ω = {dps} ({s60})" },
+    { label: "처짐 (정상상태 오차)", text: "추 토크 {tauL}을 버티려면 V = {hold} → e = {hold} ÷ {kp} = {essP}{stopNote}" },
+    { label: "이번 응답", text: "오버슈트 {os} · 정착 시간 {settle}" },
+  ],
+  formulaNote: "처짐은 τ ÷ (Kp × G)로도 씁니다. G = {G}는 모터 전압 1 V가 출력축에 내는 토크입니다(감속비에 비례).",
+
+  steps: [
+    {
+      title: "서보 모터 들여다보기",
+      text: "케이스 안에는 직류 모터, 네 단 감속 기어, 출력축 아래의 가변저항, 바닥의 제어 회로가 들어 있습니다. 케이블 세 가닥은 전원, 접지, 신호선입니다. 각 부품에 마우스를 올려 보십시오.",
+      focus: ["motor", "gears", "pot", "pcb"],
+      pose: { pwm: 1.5, kp: 0.06, gear: "std", load: 0, start: 90 },
+    },
+    {
+      title: "펄스 폭이 목표 각도를 정합니다",
+      text: "제어 보드는 20 ms마다 펄스를 하나 보냅니다. 펄스가 {pwm}이면 목표 각도는 {target}입니다. 1.00 ms가 0°, 2.00 ms가 180°이므로 펄스가 0.01 ms 늘 때마다 목표가 1.8°씩 커집니다.",
+      focus: ["ctrl", "oled", "cable", "protractor"],
+      pose: { pwm: 1.8, kp: 0.06, gear: "std", load: 0, start: 90 },
+    },
+    {
+      title: "가변저항이 지금 각도를 잽니다",
+      text: "출력축은 아래로 가변저항의 축과 이어져 있습니다. 바늘이 돌면 가변저항의 전압이 바뀌어 제어 회로가 지금 각도 {th}를 압니다. 목표와 지금을 비교하는 이 고리가 되먹임(피드백)입니다.",
+      focus: ["pot", "horn", "pcb"],
+      pose: { pwm: 1.8, kp: 0.06, gear: "std", load: 0 },
+    },
+    {
+      title: "오차만큼 모터를 돌립니다",
+      text: "제어 회로는 오차에 P 게인을 곱해 모터 전압을 정합니다. 오차가 크면 세게, 작으면 약하게 돌리고, 목표를 지나치면 전압의 부호가 바뀌어 반대로 돌립니다. 30° 앞에서 출발하면 처음 전압은 {kp} × 30° = {v30}입니다.",
+      focus: ["pcb", "motor"],
+      pose: { pwm: 1.5, kp: 0.06, gear: "std", load: 0, start: 60 },
+    },
+    {
+      title: "기어가 속도를 힘으로 바꿉니다",
+      text: "모터는 1분에 약 13,000번 돌지만 힘이 약합니다. 네 단 기어가 회전을 {ratio}로 줄이면 출력축은 그만큼 느려지고 토크는 커집니다. 앞단 기어는 너무 빨라 흐리게 보이고, 맨 위의 큰 기어만 천천히 돕니다.",
+      focus: ["gears", "motor"],
+      pose: { pwm: 1.0, kp: 0.06, gear: "std", load: 0, start: 180 },
+    },
+    {
+      title: "P 게인을 올리면 지나칩니다",
+      text: "P 게인을 {kp}로 올리고 60°에서 90°로 명령했습니다. 바늘이 더 빨리 출발하지만 목표를 {os} 지나쳤다가 되돌아옵니다(오버슈트). 응답 그래프에서 실선이 점선 위로 솟는 부분입니다.",
+      focus: ["horn", "protractor"],
+      pose: { pwm: 1.5, kp: 0.3, gear: "std", load: 0, start: 60 },
+    },
+    {
+      title: "추를 매달면 조금 처집니다",
+      text: "{load} 추가 드럼에 {tauL}의 토크로 걸립니다. 모터가 이 토크를 버티려면 {hold}의 전압이 필요하고, P 제어에서 전압은 오차가 있어야 생깁니다. 그래서 바늘은 목표보다 {ess} 모자란 {thEnd}에서 멈춥니다. 이것이 정상상태 오차입니다.",
+      focus: ["load", "drum", "horn"],
+      pose: { pwm: 1.5, kp: 0.06, gear: "std", load: 2, start: 90 },
+    },
+    {
+      title: "감속비를 키우면 덜 처집니다",
+      text: "같은 추를 단 채 강한 기어({ratio})로 바꾸었습니다. 같은 전압에서 토크가 두 배 가까이 커지므로 처짐이 {ess}로 줄었습니다. 대신 최고 속도는 {dps}로 느려집니다. 힘과 속도는 서로 맞바꾸는 관계입니다.",
+      focus: ["gears", "load"],
+      pose: { pwm: 1.5, kp: 0.06, gear: "strong", load: 2, start: 90 },
+    },
+    {
+      title: "손으로 비틀면 버팁니다",
+      text: "바늘을 손으로 30° 비틀었다가 놓습니다. 비튼 동안 오차가 커져 모터가 되돌리는 힘을 내고, 놓으면 바늘이 목표로 돌아옵니다. 그림의 바늘을 직접 끌어서 비틀어 보십시오.",
+      focus: ["horn", "pot", "motor"],
+      pose: { pwm: 1.5, kp: 0.06, gear: "std", load: 0, twist: true },
+    },
+  ],
+
+  questions: [
+    {
+      q: "펄스 폭을 1.50 ms에서 2.00 ms로 늘리면 바늘은 몇 도로 갑니까?",
+      choices: [{ label: "120°" }, { label: "135°" }, { label: "180°", correct: true }, { label: "270°" }],
+      from: { pwm: 1.5, kp: 0.06, gear: "std", load: 0, start: 90 },
+      to: { pwm: 2.0, kp: 0.06, gear: "std", load: 0 },
+      focus: ["horn", "protractor", "oled"],
+      explain: "1.00 ms에서 2.00 ms까지 1 ms가 180°에 해당하므로 0.5 ms 늘면 90° 더 갑니다. 그림의 목표: {from.target} → {to.target}",
+    },
+    {
+      q: "60°에서 90°로 명령할 때 P 게인을 0.06에서 0.30으로 올리면 오버슈트(지나침)는 어떻게 됩니까?",
+      choices: [{ label: "커진다", correct: true }, { label: "작아진다" }, { label: "변하지 않는다" }],
+      from: { pwm: 1.5, kp: 0.06, gear: "std", load: 0, start: 60 },
+      to: { pwm: 1.5, kp: 0.3, gear: "std", load: 0, start: 60 },
+      focus: ["horn"],
+      delay: 2600,
+      explain: "게인이 크면 같은 오차에도 전압이 커져 바늘이 빨리 달려옵니다. 목표에 닿아도 관성 때문에 바로 서지 못하고 지나칩니다. 그림의 오버슈트: {from.os} → {to.os}",
+    },
+    {
+      q: "2 kg 추를 단 채 기어를 표준(1:203)에서 강함(1:401)으로 바꾸면 처짐은 어떻게 됩니까?",
+      choices: [{ label: "약 2배로 커진다" }, { label: "그대로다" }, { label: "약 절반으로 준다", correct: true }],
+      from: { pwm: 1.5, kp: 0.06, gear: "std", load: 2, start: 90 },
+      to: { pwm: 1.5, kp: 0.06, gear: "strong", load: 2, start: 90 },
+      focus: ["gears", "load"],
+      delay: 2400,
+      explain: "감속비가 약 2배가 되면 같은 전압에서 출력축 토크도 약 2배가 됩니다. 추를 버티는 데 필요한 전압이 절반이 되므로 오차도 절반이면 됩니다. 그림의 처짐: {from.ess} → {to.ess} ({ratio.ess})",
+    },
+    {
+      q: "추를 1 kg에서 2 kg으로 늘리면 처짐은 어떻게 됩니까?",
+      choices: [{ label: "약 2배", correct: true }, { label: "약 4배" }, { label: "그대로" }],
+      from: { pwm: 1.5, kp: 0.06, gear: "std", load: 1, start: 90 },
+      to: { pwm: 1.5, kp: 0.06, gear: "std", load: 2, start: 90 },
+      focus: ["load", "horn"],
+      delay: 2400,
+      explain: "P 제어에서는 오차가 버텨야 할 토크에 비례합니다. 추가 2배면 토크도, 처짐도 2배입니다. 그림의 처짐: {from.ess} → {to.ess} ({ratio.ess}). P 게인을 키우거나 적분(I) 제어를 더하면 처짐을 줄일 수 있습니다.",
+    },
+  ],
+};

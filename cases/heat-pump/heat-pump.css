@@ -1,0 +1,62 @@
+/* Heat pump teaching figure. Refrigerant colours are tokens with a light and a dark value. */
+@property --hp-c { syntax: "<color>"; inherits: true; initial-value: #808080; }
+@property --hp-frost { syntax: "<number>"; inherits: true; initial-value: 0; }
+.hp-stage {
+  --hp-hot: var(--anatomy-red);
+  --hp-warm: color-mix(in srgb, var(--anatomy-red) 50%, #f2b552);
+  --hp-cold: var(--anatomy-blue);
+  --hp-cool: color-mix(in srgb, var(--anatomy-blue) 50%, #9fd8e8);
+  --hp-tint: 30%;
+  --hp-k: 100%;
+  --hp-frost-c: #eef6ff;
+  transition: --hp-frost 2.5s ease;
+  touch-action: manipulation;
+}
+.iso[data-theme="light"] .hp-stage {
+  --hp-warm: color-mix(in srgb, var(--anatomy-red) 55%, #c98500);
+  --hp-cool: color-mix(in srgb, var(--anatomy-blue) 55%, #2a9bb8);
+  --hp-tint: 20%;
+  --hp-frost-c: #6f93b8;
+}
+/* Each coloured item: an outer wrapper captures the tones it inherits (dimmed or not), the inner one mixes the
+   refrigerant colour into them. So a highlight still steps the pipe back, and nothing turns into a flat colour. */
+.hp-stage [data-seg] { transition: --hp-c 1.4s cubic-bezier(.32,.72,0,1); }
+.hp-stage [data-seg] > .hp-b {
+  --hp-hi0: var(--anatomy-hi); --hp-mid0: var(--anatomy-mid); --hp-lo0: var(--anatomy-lo); --hp-faint0: var(--anatomy-faint);
+  --hp-s00: var(--anatomy-shade-0); --hp-s10: var(--anatomy-shade-1); --hp-s20: var(--anatomy-shade-2); --hp-s30: var(--anatomy-shade-3);
+  --hp-top0: var(--anatomy-top); --hp-face0: var(--anatomy-face); --hp-paper0: var(--anatomy-paper);
+}
+.hp-stage [data-seg] > .hp-b > .hp-c {
+  --hp-cc: color-mix(in srgb, var(--hp-c) var(--hp-k), var(--hp-paper0));
+  --anatomy-hi: color-mix(in srgb, var(--hp-cc) 80%, var(--hp-hi0));
+  --anatomy-mid: color-mix(in srgb, var(--hp-cc) 55%, var(--hp-mid0));
+  --anatomy-lo: color-mix(in srgb, var(--hp-cc) 45%, var(--hp-lo0));
+  --anatomy-faint: color-mix(in srgb, var(--hp-cc) 38%, var(--hp-faint0));
+  --anatomy-shade-0: color-mix(in srgb, var(--hp-cc) var(--hp-tint), var(--hp-s00));
+  --anatomy-shade-1: color-mix(in srgb, var(--hp-cc) var(--hp-tint), var(--hp-s10));
+  --anatomy-shade-2: color-mix(in srgb, var(--hp-cc) var(--hp-tint), var(--hp-s20));
+  --anatomy-shade-3: color-mix(in srgb, var(--hp-cc) var(--hp-tint), var(--hp-s30));
+  --anatomy-top: color-mix(in srgb, var(--hp-cc) calc(var(--hp-tint) * .7), var(--hp-top0));
+  --anatomy-face: color-mix(in srgb, var(--hp-cc) var(--hp-tint), var(--hp-face0));
+}
+/* a highlighted part elsewhere: the refrigerant colour steps back with everything else */
+[data-edu-focus="tone"] > :not([data-edu-on],[data-edu-path],[data-edu-keep]),
+[data-edu-focus="tone"] [data-edu-path] > :not([data-edu-on],[data-edu-path],[data-edu-keep]) { --hp-k: 30%; }
+.hp-dots circle { fill: var(--hp-cc, var(--anatomy-hi)); stroke: var(--anatomy-card); stroke-width: .45; }
+.hp-stage:not([data-flow]) .hp-dots { display: none; }
+.hp-blade { fill: var(--anatomy-shade-2); stroke: none; }
+.hp-dial { fill: var(--anatomy-face); stroke: none; }
+.hp-hub { fill: var(--anatomy-hi); stroke: none; }
+.hp-needle { stroke-width: 1; }
+.hp-stage [data-piece="valve4"], .hp-stage [data-piece="solenoid"] { cursor: pointer; }
+.hp-stage[data-energized] [data-piece="solenoid"] { --anatomy-mid: var(--anatomy-lit); --anatomy-shade-2: var(--anatomy-lit-shade); --anatomy-top: var(--anatomy-lit-top); }
+/* frost on the outdoor coil: the evaporator below 0 °C collects rime from the air (heating in the cold) */
+.hp-stage [data-seg="ocoil"] > .hp-b > .hp-c {
+  --hp-cc: color-mix(in srgb, var(--hp-frost-c) calc(var(--hp-frost) * 70%), color-mix(in srgb, var(--hp-c) var(--hp-k), var(--hp-paper0)));
+  --anatomy-faint: color-mix(in srgb, var(--hp-cc) calc(38% + var(--hp-frost) * 40%), var(--hp-faint0));
+}
+/* phone: the long bench reads small, so the drawing grows inside the card (the card clips it) */
+@media (max-width: 640px) {
+  .hp-stage { overflow: hidden; }
+  .hp-stage > svg { width: 118%; margin: -4% -9% -2%; }
+}

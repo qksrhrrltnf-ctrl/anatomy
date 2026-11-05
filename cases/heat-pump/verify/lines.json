@@ -1,0 +1,5 @@
+[["wait",600],
+ ["click","#edu-tab-steps"],["click",".edu-dot:nth-child(1)"],["wait",1500],["click","#edu-tab-parts"],["wait",400],["eval","document.querySelector('[data-readout]').textContent"],["lines",null],
+ ["click","#edu-tab-steps"],["click",".edu-dot:nth-child(8)"],["wait",2500],["click","#edu-tab-parts"],["wait",400],["eval","document.querySelector('[data-readout]').textContent"],["lines",null],
+ ["click","#edu-tab-steps"],["click",".edu-dot:nth-child(9)"],["wait",3000],["click","#edu-tab-parts"],["wait",400],["eval","document.querySelector('[data-readout]').textContent"],["lines","shots/lines-frost.png"]
+]

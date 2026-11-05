@@ -1,0 +1,15 @@
+[["wait",400],
+ ["eval","document.querySelector('[data-readout]').textContent"],
+ ["eval","(() => { const set = (id, v) => { const i = document.getElementById('edu-p-' + id); i.value = v; i.dispatchEvent(new Event('input', { bubbles: true })); }; set('pwm', 2.0); return 1; })()"],
+ ["wait",400],["eval","document.querySelector('[data-readout]').textContent + ' | ' + document.getElementById('edu-autoplay').getAttribute('aria-checked')"],
+ ["wait",1600],["eval","document.querySelector('[data-readout]').textContent + ' || ' + [...document.querySelectorAll('.edu-formula dd')].map(d => d.textContent).join(' | ')"],
+ ["shot","shots/t-180.png",".iso-plate",1],
+ ["eval","document.querySelector('[data-chart-read]').textContent"],
+ ["shot","shots/t-chart.png",".sv-chart",1],
+ ["drag","[data-piece=\"knob\"]",0.3,0.3,0.9,0.6,20],["wait",1500],
+ ["eval","document.querySelector('[data-readout]').textContent + ' pwm=' + document.getElementById('edu-p-pwm').value"],
+ ["drag","[data-horn]",0.2,0.3,0.6,0.9,30],
+ ["eval","document.querySelector('[data-readout]').textContent"],
+ ["wait",2000],["eval","document.querySelector('[data-readout]').textContent"],
+ ["shot","shots/t-after-drag.png",".edu-figure",1]
+]

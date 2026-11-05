@@ -1,0 +1,30 @@
+.fl-glass>.iso-solid>.iso-fill{fill:var(--fl-glass);fill-opacity:.16}
+.fl-glass>.iso-solid>.iso-shade,.fl-glass>.iso-solid>.iso-top{fill-opacity:.12;stroke-opacity:.12}
+.fl-glass>.iso-solid>.iso-edge{stroke:var(--anatomy-mid)}
+.fl-core>.iso-solid>.iso-fill{fill:var(--fl-core)}
+.fl-core>.iso-solid>.iso-edge{stroke:var(--anatomy-hi)}
+.fl-core>.iso-solid>.iso-shade,.fl-core>.iso-solid>.iso-top{fill-opacity:.35;stroke-opacity:.35}
+.fl-lcd{fill:var(--fl-lcd);stroke:none}
+.fl-well{fill:var(--anatomy-shade-0);stroke:none}
+.fl-led{fill:var(--anatomy-faint);stroke:none}
+.fl-stage[data-tx] .fl-led[data-led="tx"],.fl-stage[data-rx] .fl-led[data-led="rx"]{fill:var(--anatomy-red)}
+.fl-pd{fill:var(--anatomy-lo);stroke:none}
+.fl-pulse{fill:none;stroke:var(--fl-light);stroke-width:1.6;stroke-linecap:butt;stroke-dasharray:0 100000;pointer-events:none}
+.fl-glow{fill:none;stroke:var(--fl-light);stroke-width:9;stroke-linecap:round;opacity:0;filter:blur(2.4px);pointer-events:none;stroke-dasharray:0 100000}
+.fl-beam path{pointer-events:none}
+.fl-cone{fill:var(--fl-light);fill-opacity:.22;stroke:none}
+.fl-rayline{fill:none;stroke:var(--fl-light);stroke-width:1;stroke-linecap:round;stroke-linejoin:round}
+.fl-raypulse{fill:none;stroke:var(--fl-light);stroke-width:2;stroke-linecap:butt;stroke-dasharray:0 100000}
+.fl-leakline{fill:none;stroke:var(--fl-light);stroke-width:.9;stroke-linecap:round}
+.fl-screen text{font-family:var(--anatomy-mono);fill:var(--fl-ink)}
+.fl-screen .fl-on{fill:var(--fl-ink-hi)}
+.iso{--fl-light:#ff5a4f;--fl-glass:#6fa9bd;--fl-core:#2f5560;--fl-lcd:#0e1a12;--fl-ink:#5fd38a;--fl-ink-hi:#c9ffd9}
+.iso[data-theme="light"]{--fl-light:#e5322d;--fl-glass:#cfeaf4;--fl-core:#d6eef6;--fl-lcd:#dfe9d6;--fl-ink:#3f6b45;--fl-ink-hi:#0f2e14}
+.fl-stage{cursor:text;touch-action:manipulation}
+.fl-leakfade{fill:none;stroke-width:.9;stroke-linecap:round}
+.fl-stage[data-tx] .fl-beam[data-beam="tx"] .fl-cone,.fl-stage[data-tx] .fl-beam[data-beam="ld"] .fl-cone{fill-opacity:.55}
+.fl-stage .fl-beam[data-beam="rx"] .fl-cone{fill-opacity:calc(.12 + .5 * var(--fl-rx,0))}
+.fl-stage[data-rx] .fl-pd{fill:var(--fl-light);opacity:calc(.35 + .65 * var(--fl-rx,0))}
+.fl-glow{opacity:var(--fl-glow,0)}
+.fl-pulse[data-c2]{opacity:var(--fl-c2,1)}
+.fl-pulse[data-c2][data-fixed]{opacity:var(--fl-c2b,1)}

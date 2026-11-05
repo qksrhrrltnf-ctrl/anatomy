@@ -1,0 +1,1 @@
+[["wait",2600],["shot","shots/t-mid.png",".iso-plate",1.5],["shot","shots/t-midz.png",".iso-plate",4,[230,140,330,170]],["wait",4500],["shot","shots/t-end.png",".edu-layout",1]]

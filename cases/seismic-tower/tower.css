@@ -1,0 +1,20 @@
+.st-stage{position:relative;touch-action:manipulation}
+.st-cut{fill:var(--anatomy-top);stroke:var(--anatomy-mid);stroke-width:var(--anatomy-weight);vector-effect:non-scaling-stroke}
+.st-lead{fill:var(--anatomy-shade-0);stroke:var(--anatomy-hi);stroke-width:var(--anatomy-weight);vector-effect:non-scaling-stroke}
+.iso-line.st-brace{stroke-width:1px}
+/* the resonance chart: a flat instrument panel in the card's top-left corner */
+.st-chart{position:absolute;left:0;top:8px;width:min(44%,300px);padding:8px 10px 4px;border-radius:6px;background:color-mix(in srgb,var(--anatomy-card) 88%,transparent);box-shadow:0 0 0 1px color-mix(in srgb,var(--anatomy-mid) 60%,transparent);touch-action:none;cursor:ew-resize}
+.st-chart-svg{display:block;width:100%;height:auto;overflow:visible}
+.st-ch-frame{fill:none;stroke:var(--anatomy-mid);stroke-width:1}
+.st-ch-grid{stroke:var(--anatomy-faint);stroke-width:.7}
+.st-ch-one{stroke:var(--anatomy-mid);stroke-width:.8;stroke-dasharray:3 3}
+.st-ch-band{fill:var(--anatomy-shade-3);opacity:.9}
+.st-ch-band-label{font:9.5px var(--edu-font,system-ui);fill:var(--anatomy-muted)}
+.st-ch-tick{font:9.5px var(--anatomy-mono);fill:var(--anatomy-muted)}
+.st-ch-label{font:600 10.5px var(--edu-font,system-ui);fill:var(--anatomy-text)}
+.st-ch-plain{fill:none;stroke:var(--anatomy-lo);stroke-width:1.1;stroke-dasharray:4 3}
+.st-ch-curve{fill:none;stroke:var(--anatomy-hi);stroke-width:1.6;stroke-linejoin:round}
+.st-ch-now{stroke:var(--anatomy-blue);stroke-width:1;opacity:.7}
+.st-ch-dot{fill:var(--anatomy-blue);stroke:var(--anatomy-card);stroke-width:1.5}
+.st-ch-value{font:700 11px var(--anatomy-mono);fill:var(--anatomy-strong);paint-order:stroke;stroke:var(--anatomy-card);stroke-width:3px}
+@media (max-width:640px){.st-stage{overflow:hidden}.st-stage>.iso-svg{width:150%;max-width:none;margin:-14% 0 -6% -36%}.st-chart{position:relative;top:auto;left:auto;width:auto;margin:10px 0 0}}
