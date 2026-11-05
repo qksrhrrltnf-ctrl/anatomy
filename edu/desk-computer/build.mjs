@@ -543,7 +543,7 @@ const s = (v) => `${+v.toFixed(2)} s`;
 const values = { nkeys: String(keyList.length), max: String(MAX_CHARS), tV: s(CRT_T.offV), tH: s(CRT_T.offH), tD: s(CRT_T.dot) };
 const page = {
   ...content.page,
-  footer: `모델: 본체 속의 처리 장치와 기억 장치는 그리지 않았습니다. 화면이 꺼지는 단계 시간(세로 접힘 ${s(CRT_T.offV)}, 가로 접힘 ${s(CRT_T.offH)}, 점 사라짐 ${s(CRT_T.dot)})은 이 그림의 연출 시간이며 실제 CRT마다 다릅니다. 문자 코드는 ASCII 기준입니다. 이 그림에서는 전원이 꺼지면 키도 내려가지 않습니다(원본 모델 그대로). 실제 키보드의 키는 전원과 관계없이 눌립니다.`,
+  footer: `모델: 본체 속의 처리 장치와 기억 장치는 그리지 않았습니다. 화면이 꺼지는 단계 시간(세로 접힘 ${s(CRT_T.offV)}, 가로 접힘 ${s(CRT_T.offH)}, 점 사라짐 ${s(CRT_T.dot)})은 이 그림의 연출 시간이며 실제 CRT마다 다릅니다. 문자 코드는 ASCII 기준입니다. 이 그림에서는 전원이 꺼지면 키도 내려가지 않습니다. 실제 키보드의 키는 전원과 관계없이 눌립니다.`,
 };
 
 const stageHtml = `<div class="iso-stage" tabindex="0" role="group" aria-label="데스크 컴퓨터: 그림을 누르고 영문으로 타자하면 화면에 글자가 찍힙니다. Esc 키나 로커 스위치로 전원을 켜고 끕니다.">${svg}<span class="pc-sr" role="status" aria-live="polite" data-status></span></div>`;

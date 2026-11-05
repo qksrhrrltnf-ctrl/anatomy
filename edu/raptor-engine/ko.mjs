@@ -25,11 +25,11 @@ const kg = (value) => `${Math.round(value).toLocaleString("en-US")} kg`;
 export default {
   lang: "ko",
   page: {
-    title: "랩터 2 로켓엔진 · 교육판",
+    title: "랩터 2 로켓엔진",
     kicker: "고등학교 통합과학·물리학 · 힘과 운동 / 화학 반응",
     heading: "로켓엔진은 어떻게 힘을 낼까",
     lead: "랩터 2는 액체 메탄과 액체 산소를 태우는 로켓엔진입니다. 두 액체를 펌프로 밀어 넣어 높은 압력에서 태우고, 뜨거운 가스를 노즐로 내뿜어 힘을 냅니다. 그림을 눌러 엔진을 분해해 보고, 학습 패널에서 스로틀을 바꾸어 압력과 추력이 어떻게 달라지는지 확인해 보십시오.",
-    footer: `모델: 연소실 압력은 스로틀에 비례하고, 추진제 유량은 연소실 압력에 비례한다고 가정합니다(목이 막힌 노즐). 추력 = 진공 추력 × (압력 ÷ 정격 압력) − 대기압 × 노즐 출구 넓이입니다. 정격 압력 ${MODEL.chamberBar} bar, 해수면 추력 ${MODEL.seaLevelTf} tf, 출구 지름 ${MODEL.exitM} m, 혼합비 ${MODEL.mix} : 1, 건조 질량 ${MODEL.dryKg.toLocaleString("en-US")} kg은 원본 그림의 기준값입니다. 정격 유량 약 ${Math.round(MDOT0)} kg/s는 해수면 비추력 약 ${MODEL.ispSl} s로 계산했습니다(출처: 위키백과 "SpaceX Raptor" 판본 비교표, SpaceX 2024-08-03 게시물 인용). 스로틀 하한 약 ${MODEL.thrMin} %는 위키백과 "SpaceX Raptor" 정보상자(Elon Musk 2020-08-18 게시물 인용)를 따랐습니다. 두 값 모두 2차 출처입니다. 화염의 길이와 폭은 그림을 위한 근사입니다. 라이트 테마에서는 화염이 붉은 잉크처럼 보이므로(원본과 같음) 다크 테마로 보기를 권합니다.`,
+    footer: `모델: 연소실 압력은 스로틀에 비례하고, 추진제 유량은 연소실 압력에 비례한다고 가정합니다(목이 막힌 노즐). 추력 = 진공 추력 × (압력 ÷ 정격 압력) − 대기압 × 노즐 출구 넓이입니다. 정격 압력 ${MODEL.chamberBar} bar, 해수면 추력 ${MODEL.seaLevelTf} tf, 출구 지름 ${MODEL.exitM} m, 혼합비 ${MODEL.mix} : 1, 건조 질량 ${MODEL.dryKg.toLocaleString("en-US")} kg은 그림의 기준값입니다. 정격 유량 약 ${Math.round(MDOT0)} kg/s는 해수면 비추력 약 ${MODEL.ispSl} s로 계산했습니다(출처: 위키백과 "SpaceX Raptor" 판본 비교표, SpaceX 2024-08-03 게시물 인용). 스로틀 하한 약 ${MODEL.thrMin} %는 위키백과 "SpaceX Raptor" 정보상자(Elon Musk 2020-08-18 게시물 인용)를 따랐습니다. 두 값 모두 2차 출처입니다. 화염의 길이와 폭은 그림을 위한 근사입니다. 라이트 테마에서는 화염이 붉은 잉크처럼 보이므로 다크 테마로 보기를 권합니다.`,
   },
   card: {
     fig: "그림 1",

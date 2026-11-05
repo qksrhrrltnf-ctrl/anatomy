@@ -1,7 +1,7 @@
 # edu — 한국어 인터랙티브 교육판 소스
 
 원본 예제(`examples/`)를 고치지 않고, 그 사본 위에 한국어 교육 레이어를 얹은 소스입니다.
-결과물과 검토 보고서는 사례집 저장소에 있습니다: https://github.com/qksrhrrltnf-ctrl/anatomy-casebook
+완성된 페이지는 사례집에서 볼 수 있습니다: https://qksrhrrltnf-ctrl.github.io/anatomy-casebook/
 
 ## 구조
 

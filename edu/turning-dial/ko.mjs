@@ -9,7 +9,7 @@ const base = { theta: 0, speed: 0, dir: "cw", lift: false, pod: false, game: "of
 export default {
   lang: "ko",
   page: {
-    title: "번호 다이얼 · 교육판",
+    title: "번호 다이얼",
     kicker: "중학교 기술 · 기계 요소와 동력 전달 / 고등학교 물리학 · 회전 운동",
     heading: "번호 다이얼로 보는 회전과 톱니바퀴",
     lead: "다이얼을 돌리며 눈금 읽기, 한 덩어리로 함께 도는 물체, 맞물린 톱니바퀴, 조합 자물쇠의 원리를 살펴봅니다. 다이얼을 끌어 돌리거나 학습 패널을 쓰십시오. 실험 탭에는 번호 맞추기 놀이가 있습니다.",
